@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1000, initial-scale=1" />
+<title>Inloggen bij Ter AA</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    background:#111827;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+  }
+  .stage{width:1000px;height:500px;position:relative;overflow:hidden;border-radius:28px;box-shadow:0 25px 70px rgba(0,0,0,.45)}
+  .slide{
+    position:absolute;inset:0;
+    width:1000px;height:500px;
+    overflow:hidden;
+    padding:28px 42px;
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .intro{
+    background:
+      radial-gradient(circle at 14% 18%, #60a5fa 0 10%, transparent 26%),
+      radial-gradient(circle at 86% 20%, #22c55e 0 10%, transparent 26%),
+      linear-gradient(135deg,#0f172a,#1d4ed8 48%,#0ea5e9);
+    z-index:2;
+    animation:hideIntro .8s ease 5s forwards;
+  }
+  .funny{
+    opacity:0;
+    transform:scale(.96);
+    background:
+      radial-gradient(circle at 12% 18%, #ff4fd8 0 9%, transparent 25%),
+      radial-gradient(circle at 88% 15%, #38bdf8 0 10%, transparent 26%),
+      radial-gradient(circle at 78% 88%, #a3e635 0 9%, transparent 25%),
+      linear-gradient(135deg,#4f46e5,#7c3aed 45%,#db2777);
+    animation:showFunny .8s ease 5s forwards;
+  }
+  @keyframes hideIntro{to{opacity:0;transform:scale(1.04);pointer-events:none}}
+  @keyframes showFunny{to{opacity:1;transform:scale(1)}}
+  .badge{display:inline-block;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.4);padding:8px 16px;border-radius:999px;font-size:20px;font-weight:800;transform:rotate(-2deg)}
+  h1{margin:18px 0 8px;font-size:52px;line-height:.92;letter-spacing:-2px;text-shadow:0 5px 0 rgba(0,0,0,.18)}
+  .intro h1{font-size:50px;max-width:700px}
+  .sub{margin:0;max-width:670px;font-size:23px;line-height:1.16;font-weight:700}
+  .steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:22px;max-width:710px}
+  .step,.card{background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);border-radius:20px;padding:13px 15px;backdrop-filter:blur(8px)}
+  .step{min-height:112px}.card{min-height:98px}
+  .emoji{font-size:31px;display:block;margin-bottom:3px}.step b,.card b{font-size:18px;display:block;margin-bottom:4px}.step span,.card span{font-size:14px;line-height:1.18;display:block}
+  .loader{position:absolute;left:42px;bottom:26px;width:600px;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.35);border-radius:999px;height:25px;overflow:hidden}
+  .loader:before{content:"";display:block;height:100%;width:0;background:white;border-radius:999px;animation:load 5s linear forwards}
+  @keyframes load{to{width:100%}}
+  .wait{position:absolute;left:660px;bottom:20px;font-size:20px;font-weight:900;background:#facc15;color:#111827;padding:13px 18px;border-radius:18px;transform:rotate(2deg)}
+  .biglock{position:absolute;right:70px;top:95px;width:180px;height:180px;border-radius:34px;background:#facc15;border:7px solid #111827;box-shadow:0 14px 0 rgba(0,0,0,.2)}
+  .biglock:before{content:"";position:absolute;left:40px;top:-82px;width:90px;height:90px;border:18px solid #facc15;border-bottom:0;border-radius:60px 60px 0 0;filter:drop-shadow(0 -7px 0 #111827)}
+  .keyhole{position:absolute;left:76px;top:58px;width:30px;height:30px;background:#111827;border-radius:50%}.keyhole:after{content:"";position:absolute;left:9px;top:22px;width:12px;height:45px;background:#111827;border-radius:8px}
+  .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px;max-width:650px}
+  .monster{position:absolute;right:44px;bottom:34px;width:205px;height:205px;background:#facc15;border-radius:44% 56% 50% 50%;border:7px solid #111827;box-shadow:0 13px 0 rgba(0,0,0,.2);transform:rotate(5deg)}
+  .eye{position:absolute;top:54px;width:54px;height:54px;background:#fff;border:5px solid #111827;border-radius:50%}.eye.left{left:42px}.eye.right{right:42px}.eye:after{content:"";position:absolute;left:17px;top:17px;width:14px;height:14px;background:#111827;border-radius:50%}
+  .mouth{position:absolute;left:58px;bottom:48px;width:104px;height:48px;background:#111827;border-radius:0 0 60px 60px}.tooth{position:absolute;top:0;width:18px;height:24px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}.t1{left:26px}.t2{right:26px}
+  .bubble{position:absolute;right:178px;top:64px;width:250px;background:white;color:#111827;border-radius:22px;padding:15px 18px;font-size:20px;font-weight:900;box-shadow:0 10px 0 rgba(0,0,0,.18);transform:rotate(3deg)}
+  .bubble:after{content:"";position:absolute;right:26px;bottom:-21px;border:13px solid transparent;border-top-color:white}
+  .footer{position:absolute;left:42px;right:300px;bottom:22px;font-size:20px;line-height:1.15;font-weight:900;background:rgba(0,0,0,.38);border:2px solid rgba(255,255,255,.35);padding:12px 18px;border-radius:18px;z-index:5}
+</style>
+</head>
+<body>
+  <main class="stage" aria-label="Inloggen bij Ter AA">
+    <section class="slide intro" aria-label="Eerste pagina: hoe log je in">
+      <div class="badge">Superbelangrijke login-instructie</div>
+      <h1>Hoe log je in bij Ter AA?</h1>
+      <p class="sub">Pak je beste concentratiegezicht erbij. We gaan nu heel serieus uitleggen hoe je binnenkomt op een pagina waar je blijkbaar al binnen bent.</p>
+      <section class="steps">
+        <div class="step"><span class="emoji">👀</span><b>Stap 1</b><span>Kijk aandachtig naar deze tekst. Niet knipperen. Dit is digitaal bewijs.</span></div>
+        <div class="step"><span class="emoji">🔐</span><b>Stap 2</b><span>Controleer of je bent ingelogd door te kijken of je dit kunt lezen.</span></div>
+        <div class="step"><span class="emoji">⏳</span><b>Stap 3</b><span>Wacht 5 seconden op de totaal onverwachte conclusie.</span></div>
+      </section>
+      <div class="biglock"><div class="keyhole"></div></div>
+      <div class="loader"></div>
+      <div class="wait">Momentje... 🤓</div>
+    </section>
+
+    <section class="slide funny" aria-label="Grappige conclusie over inloggen bij Ter AA">
+      <div class="badge">Handleiding: inloggen bij Ter AA</div>
+      <h1>Gefeliciteerd!<br>Je bent al binnen.</h1>
+      <p class="sub">Als je deze pagina kunt lezen, is de geheime digitale poort blijkbaar al open. Dus deze uitleg is ongeveer net zo nodig als een paraplu in een zwembad.</p>
+      <section class="cards">
+        <div class="card"><span class="emoji">🔐</span><b>Stap 1</b><span>Kijk naar het scherm. Zie je tekst? Mooi. Je bent ingelogd.</span></div>
+        <div class="card"><span class="emoji">🧠</span><b>Stap 2</b><span>Doe alsof dit heel technisch was. Knik professioneel.</span></div>
+        <div class="card"><span class="emoji">🎉</span><b>Stap 3</b><span>Vier je succes met een denkbeeldige confettikanon-click.</span></div>
+      </section>
+      <div class="bubble">Wacht... jij leest dit? Dan werkt het dus al. 🤯</div>
+      <div class="monster"><div class="eye left"></div><div class="eye right"></div><div class="mouth"><div class="tooth t1"></div><div class="tooth t2"></div></div></div>
+      <div class="footer">Conclusie: je hoeft niet meer in te loggen. Niet uitloggen, gewoon doorgaan. 🚀</div>
+    </section>
+  </main>
+<script src="route-nav.js"></script>
+</body>
+</html>

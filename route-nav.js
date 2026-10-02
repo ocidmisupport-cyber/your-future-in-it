@@ -30,4 +30,5 @@
   </style>`);
   document.body.className='future-body'; document.body.innerHTML=`<main class="future-shell"><header class="future-head"><h1>${title}</h1><p>${lead}</p></header><section class="future-main"><nav class="future-tabs" aria-label="Keuzes">${tabs.map((t,i)=>`<button class="${i===0?'active':''}" data-i="${i}">${t[0]}</button>`).join('')}</nav><article class="future-panel">${panelMarkup(tabs[0])}</article></section><nav class="future-nav" aria-label="Pagina navigatie"><a href="${previous}" aria-label="Vorige">◀</a><a class="home" href="menu.html" aria-label="Menu">▣</a><a href="${next}" aria-label="Volgende">▶</a></nav></main>`;
   const panel=document.querySelector('.future-panel');document.querySelectorAll('.future-tabs button').forEach(button=>button.addEventListener('click',()=>{const tab=tabs[Number(button.dataset.i)];document.querySelectorAll('.future-tabs button').forEach(x=>x.classList.remove('active'));button.classList.add('active');panel.innerHTML=panelMarkup(tab)}));
+  document.body.style.visibility='visible';
 })();

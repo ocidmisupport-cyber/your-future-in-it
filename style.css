@@ -302,6 +302,14 @@ body {
 }
 .future-menu .future-all-pages .icon-box { background: #d2d2d2; }
 
+/* Menu: twee ruimere knopkolommen en meer ruimte voor de uitleg links. */
+.future-menu .content-grid { grid-template-columns: 0.85fr 1.15fr; }
+.future-menu .left-column { grid-template-rows: 190px 205px; }
+.future-menu .future-all-pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.future-menu .future-all-pages .action-card { min-height: 45px; padding: 6px 9px; }
+.future-menu .future-all-pages .icon-box { width: 29px; height: 29px; font-size: 11px; }
+.future-menu .future-all-pages .action-title { font-size: 12px; }
+
 /*
    Menuachtergrond: alle lagen gebruiken alleen kleur 01 t/m 04.
    Pas de vier kleurvariabelen bovenaan aan om het hele verloop te wijzigen.

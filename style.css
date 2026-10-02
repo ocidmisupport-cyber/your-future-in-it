@@ -308,7 +308,7 @@ body {
 .future-menu .future-all-pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .future-menu .future-all-pages .action-card { min-height: 45px; padding: 6px 9px; }
 .future-menu .future-all-pages .icon-box { width: 29px; height: 29px; font-size: 11px; }
-.future-menu .future-all-pages .action-title { font-size: 12px; }
+.future-menu .future-all-pages .action-title { font-size: 14px; }
 
 /*
    Menuachtergrond: alle lagen gebruiken alleen kleur 01 t/m 04.

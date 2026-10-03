@@ -1,334 +1,75 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Afspraken ICT</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111827;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .pagina {
-      width: 1000px;
-      height: 500px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      color: white;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(56,189,248,0.42), transparent 30%),
-        radial-gradient(circle at 85% 18%, rgba(168,85,247,0.38), transparent 28%),
-        radial-gradient(circle at 80% 88%, rgba(34,197,94,0.25), transparent 28%),
-        linear-gradient(135deg, #0f172a 0%, #1d4ed8 48%, #6d28d9 100%);
-      box-shadow: 0 24px 55px rgba(0,0,0,0.45);
-    }
-
-    .pagina::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.14);
-      z-index: 1;
-    }
-
-    .decoratie {
-      position: absolute;
-      z-index: 1;
-      color: rgba(255,255,255,0.08);
-      font-weight: 900;
-      user-select: none;
-    }
-
-    .decoratie.een {
-      right: 45px;
-      top: 24px;
-      font-size: 66px;
-    }
-
-    .decoratie.twee {
-      left: 45px;
-      bottom: 14px;
-      font-size: 28px;
-      letter-spacing: 4px;
-    }
-
-    .kop {
-      position: absolute;
-      left: 42px;
-      top: 24px;
-      width: 916px;
-      z-index: 3;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 7px 15px;
-      border-radius: 999px;
-      background: #facc15;
-      color: #111827;
-      font-size: 15px;
-      font-weight: 900;
-      margin-bottom: 8px;
-      box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 42px;
-      line-height: 1;
-      text-shadow: 4px 4px 0 rgba(0,0,0,0.22);
-    }
-
-    .subtitel {
-      margin: 8px 0 0;
-      width: 760px;
-      font-size: 17px;
-      line-height: 1.25;
-      color: #e0f2fe;
-      font-weight: 700;
-    }
-
-    .uitlegblok {
-      position: absolute;
-      left: 42px;
-      top: 142px;
-      width: 260px;
-      height: 292px;
-      z-index: 3;
-      padding: 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.95);
-      color: #111827;
-      box-shadow: 10px 10px 0 rgba(0,0,0,0.22);
-    }
-
-    .uitlegblok h2 {
-      margin: 0 0 10px;
-      font-size: 26px;
-      color: #1e3a8a;
-    }
-
-    .uitlegblok p {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
-    .hint {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 9px 12px;
-      border-radius: 13px;
-      background: #dbeafe;
-      color: #1e3a8a;
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    .accordion {
-      position: absolute;
-      left: 330px;
-      top: 142px;
-      width: 628px;
-      height: 292px;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .item {
-      background: rgba(255,255,255,0.97);
-      color: #111827;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 7px 7px 0 rgba(0,0,0,0.20);
-      flex-shrink: 0;
-    }
-
-    .knop {
-      width: 100%;
-      min-height: 49px;
-      border: none;
-      background: white;
-      color: #111827;
-      padding: 8px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    .titel {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .icoon {
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      background: #111827;
-      color: white;
-      font-size: 19px;
-      flex-shrink: 0;
-    }
-
-    .pijl {
-      font-size: 23px;
-      color: #2563eb;
-      transition: transform 0.25s ease;
-    }
-
-    .tekst {
-      display: none;
-      padding: 0 18px 12px 64px;
-      border-top: 1px solid #e5e7eb;
-      background: #f8fafc;
-    }
-
-    .tekst p {
-      margin: 10px 0 0;
-      font-size: 15px;
-      line-height: 1.28;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .item.open .tekst {
-      display: block;
-    }
-
-    .item.open .pijl {
-      transform: rotate(180deg);
-    }
-
-    .item.open .knop {
-      background: #eef2ff;
-    }
-
-    .onderregel {
-      position: absolute;
-      right: 42px;
-      bottom: 18px;
-      z-index: 3;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.90);
-      color: #d1fae5;
-      font-size: 16px;
-      font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    }
-  </style>
-  <link rel="stylesheet" href="future-preload.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afspraken | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
-  <main class="pagina">
-    <div class="decoratie een">&lt;/&gt;</div>
-    <div class="decoratie twee">AFSPRAKEN • ONLINE • RESPECT</div>
-
-    <section class="kop">
-      <div class="label">ICT Klas IC.26mi.a</div>
+<body data-page="afspraken">
+  <main class="tab-wrapper">
+    <header class="banner">
       <h1>Afspraken in de ICT-les</h1>
-      <p class="subtitel">
-        Klik op een onderwerp. Daarna klapt de uitleg onder het onderwerp open.
-      </p>
+      <p>Met duidelijke afspraken kan iedereen rustig werken, leren en samenwerken. Ontdek wat Sam en Jayden meemaken.</p>
+      <div class="chips">
+        <span>Rustig werken</span>
+        <span>Veilig online</span>
+        <span>Respectvol</span>
+        <span>Samen leren</span>
+      </div>
+    </header>
+
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Afspraken">
+        <button class="tab-button active" type="button" data-tab="telefoon">Telefoongebruik</button>
+        <button class="tab-button" type="button" data-tab="whatsapp">WhatsApp</button>
+        <button class="tab-button" type="button" data-tab="email">E-mail</button>
+        <button class="tab-button" type="button" data-tab="teams">MS Teams</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="telefoon">
+          <span class="badge">📱 TELEFOONGEBRUIK</span>
+          <h2>De gemiste uitleg</h2>
+          <p>Sam is op tijd in het lokaal. De docent legt uit hoe de groep vandaag een storing gaat onderzoeken. Dan komt Jayden tien minuten te laat binnen. Hij kijkt meteen op zijn telefoon en vraagt: “Wat moeten we doen?”</p>
+          <p>De docent stopt de uitleg en begint opnieuw, terwijl de rest al aan de slag wil. Jayden kijkt ondertussen nog een paar keer op zijn telefoon en mist opnieuw stukjes.</p>
+          <div class="note"><strong>Afspraak:</strong> tijdens uitleg ligt je telefoon weg of op stil. Dan weet je vanaf het begin wat je moet doen en hoeft de klas niet steeds opnieuw te wachten.</div>
+        </article>
+
+        <article class="tab-content" id="whatsapp">
+          <span class="badge">💬 WHATSAPP</span>
+          <h2>Te veel berichten</h2>
+          <p>Jayden weet nog niet waar hij moet beginnen. In plaats van Teams te openen, stuurt hij in een WhatsApp-groep: “Wat moesten we doen?” Meteen komen er grapjes, foto’s en losse reacties binnen.</p>
+          <p>Sam hoort steeds meldingen en raakt ook afgeleid. Uiteindelijk weet Jayden nog steeds niet welke stap hij moet doen. De docent legt uit dat de opdracht gewoon in Teams staat.</p>
+          <div class="note"><strong>Afspraak:</strong> WhatsApp gebruiken we niet tijdens uitleg en werktijd. Heb je hulp nodig? Vraag het rustig aan de docent of aan een klasgenoot naast je.</div>
+        </article>
+
+        <article class="tab-content" id="email">
+          <span class="badge">✉️ E-MAIL</span>
+          <h2>Een vraag die duidelijk is</h2>
+          <p>Thuis komt Sam vast te zitten bij de opdracht. Eerst wil Sam snel mailen: “Ik snap het niet, help.” Dan denkt Sam aan de les: de docent moet wel weten wie je bent, over welke opdracht het gaat en waar je vastloopt.</p>
+          <p>Sam schrijft een duidelijke onderwerpregel, begint netjes en legt kort uit bij welke stap hulp nodig is. De volgende ochtend krijgt Sam een antwoord waar echt iets mee gedaan kan worden.</p>
+          <div class="note"><strong>Afspraak:</strong> gebruik een onderwerp, een nette aanhef en beleefde taal. Controleer je bericht en open nooit zomaar verdachte links of bijlagen.</div>
+        </article>
+
+        <article class="tab-content" id="teams">
+          <span class="badge">👥 MS TEAMS</span>
+          <h2>Alles terugvinden</h2>
+          <p>De volgende les is Jayden op tijd. Hij opent MS Teams en vindt daar de uitleg van gisteren, de opdracht en de bestanden. “Had ik dit gisteren maar meteen bekeken,” zegt hij tegen Sam.</p>
+          <p>Sam helpt Jayden het juiste bestand te openen. Nu kan Jayden gewoon aansluiten en hoeft de docent niet alles opnieuw uit te leggen.</p>
+          <div class="note"><strong>Afspraak:</strong> plaats schoolzaken in het juiste kanaal, reageer netjes en houd Teams overzichtelijk. Zo kan iedereen informatie snel terugvinden.</div>
+        </article>
+      </section>
     </section>
-
-    <aside class="uitlegblok">
-      <h2>Waarom?</h2>
-      <p>
-        We gebruiken digitale middelen netjes, veilig en respectvol.
-        Zo kan iedereen rustig leren en samenwerken.
-      </p>
-      <div class="hint">Klik rechts op een afspraak</div>
-    </aside>
-
-    <section class="accordion">
-      <div class="item">
-        <button class="knop" onclick="klapOpen(this)">
-          <span class="titel"><span class="icoon">📱</span>Telefoongebruik</span>
-          <span class="pijl">⌄</span>
-        </button>
-        <div class="tekst">
-          <p>
-            Tijdens de uitleg ligt je telefoon weg of op stil. Je gebruikt je telefoon alleen
-            als de docent daar toestemming voor geeft, bijvoorbeeld voor een opdracht.
-          </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <button class="knop" onclick="klapOpen(this)">
-          <span class="titel"><span class="icoon">💬</span>WhatsApp</span>
-          <span class="pijl">⌄</span>
-        </button>
-        <div class="tekst">
-          <p>
-            WhatsApp gebruiken we niet tijdens uitleg of werktijd. We sturen geen foto's,
-            filmpjes of berichten over anderen zonder toestemming en blijven respectvol.
-          </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <button class="knop" onclick="klapOpen(this)">
-          <span class="titel"><span class="icoon">✉️</span>E-mail</span>
-          <span class="pijl">⌄</span>
-        </button>
-        <div class="tekst">
-          <p>
-            Bij e-mail gebruiken we een duidelijk onderwerp, nette aanhef en beleefde taal.
-            Controleer je bericht en open geen verdachte links of bijlagen.
-          </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <button class="knop" onclick="klapOpen(this)">
-          <span class="titel"><span class="icoon">👥</span>MS Teams</span>
-          <span class="pijl">⌄</span>
-        </button>
-        <div class="tekst">
-          <p>
-            In MS Teams plaatsen we schoolzaken in het juiste kanaal. We reageren netjes,
-            spammen niet en gebruiken Teams niet voor onzinberichten.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div class="onderregel">Rustig • veilig • respectvol online</div>
   </main>
 
   <script>
-    function klapOpen(knop) {
-      const item = knop.parentElement;
-      item.classList.toggle("open");
-    }
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
   </script>
-<script src="route-nav.js"></script>
 </body>
 </html>

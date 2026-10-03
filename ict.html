@@ -1,246 +1,91 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ICT uitleg met knoppen</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111827;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .pagina {
-      width: 1000px;
-      height: 500px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      color: white;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(56,189,248,0.40), transparent 28%),
-        radial-gradient(circle at 80% 18%, rgba(236,72,153,0.35), transparent 30%),
-        radial-gradient(circle at 82% 85%, rgba(251,191,36,0.30), transparent 26%),
-        linear-gradient(135deg, #1e1b4b 0%, #4c1d95 45%, #be185d 100%);
-      box-shadow: 0 22px 55px rgba(0,0,0,0.45);
-    }
-
-    .kop {
-      position: absolute;
-      left: 40px;
-      top: 32px;
-      width: 920px;
-      z-index: 2;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: #facc15;
-      color: #111827;
-      font-size: 17px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 54px;
-      line-height: 1;
-      text-shadow: 4px 4px 0 rgba(0,0,0,0.20);
-    }
-
-    .subtitel {
-      margin: 0;
-      width: 760px;
-      font-size: 21px;
-      line-height: 1.35;
-      color: #eef2ff;
-      font-weight: 700;
-    }
-
-    .knoppen {
-      position: absolute;
-      left: 55px;
-      top: 190px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      z-index: 3;
-    }
-
-    .ict-knop {
-      width: 120px;
-      height: 78px;
-      border: none;
-      border-radius: 22px;
-      color: white;
-      font-size: 42px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.30);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .ict-knop:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 16px 28px rgba(0,0,0,0.35);
-    }
-
-    .ict-knop.actief {
-      outline: 4px solid rgba(255,255,255,0.85);
-      transform: scale(1.04);
-    }
-
-    .i-knop {
-      background: linear-gradient(135deg, #0ea5e9, #2563eb);
-    }
-
-    .c-knop {
-      background: linear-gradient(135deg, #8b5cf6, #d946ef);
-    }
-
-    .t-knop {
-      background: linear-gradient(135deg, #f97316, #facc15);
-      color: #111827;
-    }
-
-    .tekstvenster {
-      position: absolute;
-      left: 220px;
-      top: 175px;
-      width: 720px;
-      min-height: 250px;
-      padding: 28px 30px;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.94);
-      color: #111827;
-      box-shadow: 16px 16px 0 rgba(0,0,0,0.22);
-      z-index: 3;
-    }
-
-    .venster-label {
-      display: inline-block;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: #111827;
-      color: white;
-      font-size: 16px;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .tekstvenster h2 {
-      margin: 0 0 12px;
-      font-size: 34px;
-      color: #312e81;
-    }
-
-    .tekstvenster p {
-      margin: 0;
-      font-size: 23px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    .hint {
-      position: absolute;
-      right: 45px;
-      bottom: 26px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.88);
-      color: #d1fae5;
-      font-size: 18px;
-      font-weight: 800;
-      z-index: 3;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    }
-
-    .decoratie {
-      position: absolute;
-      color: rgba(255,255,255,0.14);
-      font-size: 68px;
-      font-weight: 900;
-      user-select: none;
-      z-index: 1;
-    }
-
-    .d1 { right: 50px; top: 35px; }
-    .d2 { left: 150px; bottom: 20px; font-size: 38px; }
-    .d3 { right: 260px; top: 100px; font-size: 42px; }
-  </style>
-  <link rel="stylesheet" href="future-preload.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wat is ICT? | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="pagina">
-    <div class="decoratie d1">&lt;/&gt;</div>
-    <div class="decoratie d2">0101 1010</div>
-    <div class="decoratie d3">⚡</div>
+<body data-page="ict">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Wat betekent ICT eigenlijk?</h1>
+      <p>Sam merkt dat ICT veel meer is dan alleen computers. Ontdek stap voor stap waar de letters I, C en T voor staan.</p>
+      <div class="chips">
+        <span>Informatie</span>
+        <span>Communicatie</span>
+        <span>Technologie</span>
+        <span>Samen oplossen</span>
+      </div>
+    </header>
 
-    <section class="kop">
-      <div class="label">ICT Klas ID.26mi.a</div>
-      <h1>Waar staat ICT voor?</h1>
-      <p class="subtitel">
-        Klik op een letter om te zien wat elk onderdeel van ICT betekent.
-      </p>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="ICT onderdelen">
+        <button class="tab-button active" type="button" data-tab="start">Wat is ICT?</button>
+        <button class="tab-button" type="button" data-tab="informatie">I = Informatie</button>
+        <button class="tab-button" type="button" data-tab="communicatie">C = Communicatie</button>
+        <button class="tab-button" type="button" data-tab="technologie">T = Technologie</button>
+        <button class="tab-button" type="button" data-tab="samen">Alles samen</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="start">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Meer dan alleen computers</h2>
+          <p>Na het oplossen van het probleem met de beamer denkt Sam dat ICT vooral gaat over computers, kabels en schermen. Maar tijdens de volgende les zegt de docent: “ICT zit bijna overal om je heen.”</p>
+          <p>Sam kijkt om zich heen. Op het bord staat de planning, iedereen werkt in Teams en via wifi zijn alle laptops verbonden met het netwerk.</p>
+          <div class="note"><strong>ICT</strong> staat voor <strong>Informatie- en Communicatietechnologie</strong>. De drie letters horen bij elkaar.</div>
+        </article>
+
+        <article class="tab-content" id="informatie">
+          <span class="badge">I = INFORMATIE</span>
+          <h2>De bestanden van Sam</h2>
+          <p>Sam maakt een verslag van de storing met de beamer. Hij noteert bijvoorbeeld het tijdstip, het lokaalnummer, de melding <strong>“Geen signaal”</strong> en welke kabel was aangesloten. Dat zijn losse <strong>gegevens</strong>.</p>
+          <p>Gegevens zijn losse feiten, cijfers, woorden of metingen. Pas wanneer je die gegevens bij elkaar zet en er betekenis aan geeft, ontstaat <strong>informatie</strong>. Het lokaalnummer alleen zegt bijvoorbeeld nog weinig. Maar als er staat: “In lokaal 2.14 werkt de beamer niet omdat de HDMI-kabel los zit”, dan heb je bruikbare informatie.</p>
+          <p>In ICT werk je daarom veel met gegevens én informatie. Je verzamelt gegevens, controleert ze, slaat ze op en gebruikt ze om een probleem te begrijpen of een beslissing te nemen.</p>
+          <div class="note"><strong>Onthoud:</strong> gegevens zijn losse feiten. Informatie ontstaat wanneer die gegevens samen betekenis krijgen.</div>
+        </article>
+
+        <article class="tab-content" id="communicatie">
+          <span class="badge">C = COMMUNICATIE</span>
+          <h2>Informatie moet ergens naartoe</h2>
+          <p>Sam wil zijn verslag delen met de docent. Hij zet het bestand in Teams. Dat is digitale communicatie: informatie gaat via een netwerk van de ene plek naar de andere.</p>
+          <p>Maar communicatie is veel breder dan alleen e-mail, wifi of Teams. Als Sam een gebruiker helpt en rustig uitlegt wat hij doet, is dat ook communicatie. Spreken en luisteren horen daar dus net zo goed bij.</p>
+          <p>Er bestaat ook <strong>non-verbale communicatie</strong>. Dat is communicatie zonder woorden. Denk aan oogcontact, gezichtsuitdrukking, houding, gebaren en de manier waarop je tegenover iemand staat. Als Sam met zijn armen over elkaar staat en wegkijkt, kan een gebruiker denken dat hij geen zin heeft om te helpen, ook al zegt Sam niets verkeerd.</p>
+          <p>Bij ICT-support moet je daarom niet alleen technisch goed kunnen werken, maar ook duidelijk, rustig en professioneel kunnen communiceren.</p>
+          <div class="note"><strong>Onthoud:</strong> communicatie is informatie uitwisselen. Dat kan digitaal, mondeling én non-verbaal.</div>
+        </article>
+
+        <article class="tab-content" id="technologie">
+          <span class="badge">T = TECHNOLOGIE</span>
+          <h2>Wat maakt dat mogelijk?</h2>
+          <p>Sam kijkt nu anders naar het lokaal. De laptop, het wifi-accesspoint, de switch, de beamer, het besturingssysteem en Teams werken allemaal samen.</p>
+          <p>Dat is de <strong>technologie</strong>: alle technische hulpmiddelen die nodig zijn om gegevens te verwerken, informatie te bewaren en communicatie mogelijk te maken.</p>
+          <p>Technologie gaat dus niet alleen over apparaten. Ook software, netwerken, apps, servers en instellingen horen erbij. Als één onderdeel niet goed werkt, kan dat gevolgen hebben voor de rest.</p>
+          <div class="note"><strong>Onthoud:</strong> technologie bestaat uit hardware, software en netwerken die samen ICT mogelijk maken.</div>
+        </article>
+
+        <article class="tab-content" id="samen">
+          <span class="badge">ICT IN DE PRAKTIJK</span>
+          <h2>Alles komt samen</h2>
+          <p>Sam krijgt een nieuwe melding: een gebruiker kan een bestand niet openen. De bestandsnaam, de foutmelding en het tijdstip zijn eerst losse <strong>gegevens</strong>. Sam bekijkt alles samen en begrijpt wat er aan de hand is. Dan worden die gegevens bruikbare <strong>informatie</strong>.</p>
+          <p>Sam bespreekt het probleem met de gebruiker. Hij stelt vragen, luistert naar het antwoord en let ook op de reactie van de gebruiker. Dat is <strong>communicatie</strong>: mondeling, digitaal en soms ook non-verbaal.</p>
+          <p>Daarna gebruikt Sam een laptop, het netwerk en software om het probleem op te lossen. Dat is de <strong>technologie</strong>.</p>
+          <p>Nu begrijpt Sam waarom ICT niet één los onderdeel is. Informatie, communicatie en technologie hebben elkaar nodig. Zonder goede informatie weet je niet wat er speelt, zonder communicatie kun je niet goed samenwerken en zonder technologie kun je veel digitale oplossingen niet uitvoeren.</p>
+          <div class="info"><strong>Dus:</strong> ICT betekent werken met gegevens en informatie, goed communiceren met mensen en systemen, en technologie gebruiken om problemen op te lossen.</div>
+        </article>
+      </section>
     </section>
-
-    <nav class="knoppen">
-      <button class="ict-knop i-knop actief" onclick="toonInfo('i', this)">I</button>
-      <button class="ict-knop c-knop" onclick="toonInfo('c', this)">C</button>
-      <button class="ict-knop t-knop" onclick="toonInfo('t', this)">T</button>
-    </nav>
-
-    <section class="tekstvenster">
-      <div class="venster-label">Betekenis</div>
-      <h2 id="titel">Informatie</h2>
-      <p id="tekst">
-        De I van ICT staat voor informatie. Dat zijn gegevens zoals bestanden,
-        foto's, cijfers, websites en andere digitale data die opgeslagen en gebruikt worden.
-      </p>
-    </section>
-
-    <div class="hint">Klik op I, C of T</div>
   </main>
 
   <script>
-    const inhoud = {
-      i: {
-        titel: "Informatie",
-        tekst: "De I van ICT staat voor informatie. Dat zijn gegevens zoals bestanden, foto's, cijfers, websites en andere digitale data die opgeslagen en gebruikt worden."
-      },
-      c: {
-        titel: "Communicatie",
-        tekst: "De C van ICT staat voor communicatie. Denk aan e-mail, internet, wifi, chatten en het uitwisselen van informatie via netwerken en apparaten."
-      },
-      t: {
-        titel: "Technologie",
-        tekst: "De T van ICT staat voor technologie. Dat zijn computers, laptops, servers, apps, software en andere technische hulpmiddelen die alles laten werken."
-      }
-    };
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
 
-    function toonInfo(letter, knop) {
-      document.getElementById("titel").textContent = inhoud[letter].titel;
-      document.getElementById("tekst").textContent = inhoud[letter].tekst;
-
-      document.querySelectorAll(".ict-knop").forEach(button => {
-        button.classList.remove("actief");
-      });
-
-      knop.classList.add("actief");
-    }
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
   </script>
-<script src="route-nav.js"></script>
 </body>
 </html>

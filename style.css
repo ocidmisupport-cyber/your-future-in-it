@@ -795,3 +795,12 @@ body[data-page="afspraken"] .banner {
 body[data-page="afspraken"] .tab-page {
   height: calc(72% - 20px);
 }
+
+/* ICT: menu en tekstvak circa 20px lager; tekstvak daardoor compacter. */
+body[data-page="ict"] .banner {
+  height: calc(28% + 20px);
+}
+
+body[data-page="ict"] .tab-page {
+  height: calc(72% - 20px);
+}

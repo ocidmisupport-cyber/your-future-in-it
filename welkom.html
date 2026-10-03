@@ -3,57 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welkom | ID.26mi.a</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Welkom | ICT Support</title>
+  <link rel="stylesheet" href="style (1)(1).css">
 </head>
-<body class="welcome-page">
-  <main class="page-shell welcome-shell">
-    <section class="welcome-hero">
-      <div class="welcome-kicker">Welkom bij ICT Support</div>
-      <h1>Jouw eerste<br>storing begint hier.</h1>
-      <p>Geen stress: je hoeft nog niet alles te weten. Je leert kijken, vragen stellen en stap voor stap een oplossing vinden.</p>
-      <div class="welcome-class">Klas ID.26mi.a</div>
-    </section>
-
-    <section class="story-card glass-card" aria-live="polite">
-      <span class="story-label" id="storyLabel">HET VERHAAL VAN SAM · 01</span>
-      <h2 id="storyTitle">Het eerste storinkje</h2>
-      <div class="story-text" id="storyText">
-        <p>Maandagochtend, kwart voor negen. Sam staat voor lokaal 2.14 met een rugzak vol goede voornemens en nog maar 12% batterij.</p>
-        <p>De docent heeft een probleem: de beamer geeft <strong>Geen signaal</strong>. Wie durft het te proberen?</p>
+<body data-page="welkom">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Welkom bij ICT Support</h1>
+      <p>Je hoeft nog niet alles te weten. Je leert kijken, vragen stellen en stap voor stap een oplossing vinden.</p>
+      <div class="chips">
+        <span>Klas ID.26mi.a</span>
+        <span>Ontdekken</span>
+        <span>Samen leren</span>
+        <span>Aan de slag</span>
       </div>
-      <div class="story-tip" id="storyTip">💡 ICT-support begint niet met gokken, maar met rustig kijken.</div>
+    </header>
+
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Welkom onderdelen">
+        <button class="tab-button active" type="button" data-tab="verhaal">Het eerste storinkje</button>
+        <button class="tab-button" type="button" data-tab="kijken">De eerste stap: kijken</button>
+        <button class="tab-button" type="button" data-tab="ontdekken">Wat jij gaat ontdekken</button>
+        <button class="tab-button" type="button" data-tab="opdracht">Jouw eerste opdracht</button>
+        <button class="tab-button" type="button" data-tab="start">Aan de slag</button>
+      </nav>
+
+      <section class="tab-content-area">
+        <article class="tab-content active" id="verhaal">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Het eerste storinkje</h2>
+          <p>Het is maandagochtend, kwart voor negen. Sam staat voor de deur van lokaal 2.14 met een rugzak vol goede voornemens en een telefoon met nog maar 12% batterij.</p>
+          <p>Binnen zit al een groep studenten. De docent heeft een rustige glimlach, maar ook een probleem: de beamer doet het niet. Op het scherm staat alleen: <strong>Geen signaal.</strong></p>
+          <div class="note"><strong>De vraag:</strong> Wie wil het proberen? Sam steekt aarzelend een hand op.</div>
+        </article>
+
+        <article class="tab-content" id="kijken">
+          <span class="badge">STAP 1</span>
+          <h2>Eerst kijken</h2>
+          <p>Sam loopt naar voren en doet iets wat niemand verwacht: eerst niets. Sam kijkt gewoon goed.</p>
+          <ul>
+            <li>Staat de beamer aan? Ja, het lampje brandt groen.</li>
+            <li>Zit de HDMI-kabel vast? Ja.</li>
+            <li>Zit de andere kant in de laptop? Ja.</li>
+            <li>Staat de laptop op het juiste scherm? Hmm…</li>
+          </ul>
+          <div class="note">Sam drukt op <strong>Windows-toets + P</strong> en kiest <strong>Dupliceren</strong>. Het scherm licht op.</div>
+        </article>
+
+        <article class="tab-content" id="ontdekken">
+          <span class="badge">JOUW OPLEIDING</span>
+          <h2>Wat jij gaat ontdekken</h2>
+          <p>ICT-support draait niet om alles al weten. Het draait om nieuwsgierig zijn, goed luisteren en stap voor stap naar een oplossing zoeken.</p>
+          <ul>
+            <li>Hoe computers en netwerken werken.</li>
+            <li>Hoe je een storing onderzoekt in plaats van maar wat te proberen.</li>
+            <li>Hoe je gebruikers helpt door goed door te vragen.</li>
+            <li>Waar jij goed in bent en welke ICT-kant bij jou past.</li>
+          </ul>
+        </article>
+
+        <article class="tab-content" id="opdracht">
+          <span class="badge">JOUW EERSTE OPDRACHT</span>
+          <h2>Schrijf het voor jezelf op</h2>
+          <p>Pak een briefje en schrijf twee dingen op:</p>
+          <div class="info"><strong>Benieuwd naar:</strong> wat wil jij het liefst ontdekken in deze opleiding?</div>
+          <div class="info"><strong>Zie tegenop:</strong> wat vind je spannend of lastig?</div>
+          <p>Bewaar het briefje goed. Over een paar maanden kijk je terug hoeveel je al hebt geleerd.</p>
+        </article>
+
+        <article class="tab-content" id="start">
+          <span class="badge">KLAAR VOOR DE START</span>
+          <h2>Het ontdekken begint nu</h2>
+          <p>Sam dacht na en schreef: <em>“Ik ben benieuwd hoe je weet waar een probleem zit. Ik zie ertegenop dat ik iets niet weet als iemand mij om hulp vraagt.”</em></p>
+          <p>Dat is helemaal niet erg. Elke ervaren ICT'er heeft ooit een storing voor het eerst gezien. Het verschil zit in kijken, vragen stellen en ervan leren.</p>
+          <div class="note"><strong>Welkom bij de opleiding ICT Support. 🚀</strong></div>
+        </article>
+      </section>
     </section>
-
-    <aside class="discover-card">
-      <span>DIT GA JIJ ONTDEKKEN</span>
-      <strong>💻 Computers<br>🌐 Netwerken<br>🧩 Problemen oplossen<br>🤝 Mensen helpen</strong>
-      <p>En vooral: welke ICT'er jij wilt worden.</p>
-    </aside>
-
-    <nav class="welcome-nav" aria-label="Onderdelen van het welkomstverhaal">
-      <button class="welcome-button active" type="button" data-story="start">01 <span>Het probleem</span></button>
-      <button class="welcome-button" type="button" data-story="kijken">02 <span>Eerst kijken</span></button>
-      <button class="welcome-button" type="button" data-story="ontdekken">03 <span>Wat ontdek je?</span></button>
-      <button class="welcome-button" type="button" data-story="opdracht">04 <span>Jouw start</span></button>
-    </nav>
   </main>
 
   <script>
-    const stories = {
-      start: { label: 'HET VERHAAL VAN SAM · 01', title: 'Het eerste storinkje', text: '<p>Maandagochtend, kwart voor negen. Sam staat voor lokaal 2.14 met een rugzak vol goede voornemens en nog maar 12% batterij.</p><p>De docent heeft een probleem: de beamer geeft <strong>Geen signaal</strong>. Wie durft het te proberen?</p>', tip: '💡 ICT-support begint niet met gokken, maar met rustig kijken.' },
-      kijken: { label: 'HET VERHAAL VAN SAM · 02', title: 'De eerste stap: kijken', text: '<p>Sam loopt naar voren en doet iets onverwachts: eerst niets. De beamer staat aan, de HDMI-kabel zit vast en de laptop is aangesloten.</p><p>Dan drukt Sam op <strong>Windows-toets + P</strong> en kiest <strong>Dupliceren</strong>. Het scherm licht op.</p>', tip: '🔎 Kijk, controleer en stel vragen. Dat is vaak al de helft van de oplossing.' },
-      ontdekken: { label: 'JOUW OPLEIDING · 03', title: 'Wat jij gaat ontdekken', text: '<p>Je leert hoe computers en netwerken werken, hoe je een storing onderzoekt en hoe je gebruikers goed helpt.</p><p>Je hoeft niet meteen alles te kunnen. Nieuwsgierig zijn, luisteren en doorvragen maken het verschil.</p>', tip: '🚀 Fouten maken mag. Elke fout is informatie voor je volgende stap.' },
-      opdracht: { label: 'JOUW EERSTE OPDRACHT · 04', title: 'Waar ben jij benieuwd naar?', text: '<p>Schrijf voor jezelf op wat je het meest wilt ontdekken in deze opleiding. Schrijf ook één ding op waar je tegenop ziet.</p><p>Bewaar het goed. Over een paar maanden kijk je terug hoeveel je al hebt geleerd.</p>', tip: '✍️ Welkom bij ICT Support. Het ontdekken begint nu.' }
-    };
-    const buttons = document.querySelectorAll('.welcome-button');
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
     buttons.forEach(button => button.addEventListener('click', () => {
-      const story = stories[button.dataset.story];
-      document.getElementById('storyLabel').textContent = story.label;
-      document.getElementById('storyTitle').textContent = story.title;
-      document.getElementById('storyText').innerHTML = story.text;
-      document.getElementById('storyTip').textContent = story.tip;
+      const target = button.dataset.tab;
       buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
     }));
   </script>
 </body>

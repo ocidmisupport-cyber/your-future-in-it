@@ -786,3 +786,12 @@ body[data-page="welkom"] .banner {
 body[data-page="welkom"] .tab-page {
   height: calc(72% - 20px);
 }
+
+/* Afspraken: menu en tekstvak circa 20px lager; tekstvak daardoor compacter. */
+body[data-page="afspraken"] .banner {
+  height: calc(28% + 20px);
+}
+
+body[data-page="afspraken"] .tab-page {
+  height: calc(72% - 20px);
+}

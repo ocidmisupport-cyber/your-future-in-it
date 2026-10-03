@@ -777,3 +777,12 @@ body[data-page="dagtaken"] .tab-page { height: calc(75% - 30px); }
 .welcome-button span { display: block; margin-top: 5px; font-size: 16px; line-height: 1.05; }
 .welcome-button:hover, .welcome-button:focus-visible, .welcome-button.active { background: var(--kleur-02); color: #113537; transform: translateY(-3px); outline: none; }
 @media (max-width: 760px) { .welcome-page { display: block; } .welcome-shell { width: 100vw; height: 100vh; border-radius: 0; } }
+
+/* Welkom: menu en tekstvak circa 20px lager; tekstvak daardoor compacter. */
+body[data-page="welkom"] .banner {
+  height: calc(28% + 20px);
+}
+
+body[data-page="welkom"] .tab-page {
+  height: calc(72% - 20px);
+}

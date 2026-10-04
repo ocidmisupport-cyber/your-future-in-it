@@ -2,171 +2,18 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maak jouw portfolio</title>
 
+<link rel="stylesheet" href="style.css">
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-}
-
-.tab-wrapper {
-  width: 1000px;
-  height: 500px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-  border-radius: 22px;
-  background: linear-gradient(155deg, #050505 0%, #161616 38%, #FF996E 100%);
-  color: #ffffff;
-}
-
-.banner {
-  height: 155px;
-  color: white;
-  padding: 18px 26px 12px;
-}
-
-.banner h1 {
-  margin: 0 0 7px;
-  font-size: 29px;
-  line-height: 1.05;
-  color: white;
-}
-
-.banner p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.28;
-  max-width: 850px;
-  color: white;
-}
-
-.chips {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-.chips span {
-  background: rgba(255,255,255,0.88);
-  color: #151515;
-  border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.tab-page {
-  height: 345px;
-  display: flex;
-  gap: 14px;
-  padding: 0 14px 14px 14px;
-  overflow: hidden;
-}
-
-.tab-menu {
-  width: 245px;
-  flex: 0 0 245px;
-  padding: 6px;
-  overflow: hidden;
-}
-
-.tab-button {
-  width: 100%;
-  display: block;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.10);
-  color: white;
-  text-align: left;
-  padding: 5px 8px;
-  margin-bottom: 3px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 12.3px;
-  line-height: 1.12;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tab-button:hover,
-.tab-button.active {
-  background: #FF996E;
-  color: #111111;
-  border-color: #FF996E;
-}
-
-.tab-content-area {
-  flex: 1;
-  min-width: 0;
-  height: 100%;
-  padding: 13px 16px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.78);
-  border: 1px solid rgba(255,255,255,0.50);
-  border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.20);
-  backdrop-filter: blur(2px);
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-.tab-content h2 {
-  color: #101010;
-  margin: 0 0 6px;
-  font-size: 20px;
-  line-height: 1.08;
-}
-
-.tab-content p {
-  font-size: 13.1px;
-  line-height: 1.18;
-  margin: 0 0 6px;
-  color: #202020;
-}
-
-.tab-content ul,
-.tab-content ol {
-  margin: 4px 0 6px 18px;
-  padding: 0;
-}
-
-.tab-content li {
-  font-size: 13.1px;
-  line-height: 1.16;
-  margin-bottom: 3px;
-  color: #202020;
-}
-
-.note,
-.info {
-  background: rgba(255,255,255,0.60);
-  border-left: 5px solid #FF996E;
-  padding: 7px 9px;
-  border-radius: 9px;
-  color: #202020;
-  margin: 7px 0;
-  font-size: 13px;
-  line-height: 1.16;
-}
+/* Dezelfde lagere plaatsing als de overige turquoise pagina’s. */
+body[data-page="portfolio"] .banner { height: calc(28% + 20px); }
+body[data-page="portfolio"] .tab-page { height: calc(72% - 20px); }
 </style>
-  <link rel="stylesheet" href="future-preload.css">
 </head>
 
-<body>
+<body data-page="portfolio">
 
 <div class="tab-wrapper">
 
@@ -282,7 +129,7 @@ body {
         <p class="note"><strong>Onthoud:</strong> je portfolio is jouw verhaal. Het moet duidelijk, netjes en van jou zijn.</p>
       </div>
 
-    </div>    </div>
+    </div>
   </div>
 </div>
 
@@ -301,6 +148,5 @@ function openTab(event, tabId) {
 }
 </script>
 
-<script src="route-nav.js"></script>
 </body>
 </html>

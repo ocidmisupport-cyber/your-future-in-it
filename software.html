@@ -1,262 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Office 365 installeren - Ter AA stappenplan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software installeren | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root{
-      --paars:#24115f; --blauw:#1746ff; --groen:#00e6ad; --roze:#ff4fd8;
-      --geel:#ffe75a; --wit:#fff; --kaart:rgba(255,255,255,.13);
-    }
-
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      background:#111;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-    }
-
-    .poster{
-      width:1000px;
-      height:500px;
-      position:relative;
-      overflow:hidden;
-      color:var(--wit);
-      border-radius:28px;
-      padding:28px 36px 52px;
-      background:
-        radial-gradient(circle at 86% 10%,rgba(255,79,216,.55),transparent 24%),
-        radial-gradient(circle at 8% 88%,rgba(0,230,173,.30),transparent 24%),
-        linear-gradient(135deg,var(--paars),var(--blauw));
-      box-shadow:0 25px 80px rgba(0,0,0,.4);
-    }
-
-    .poster:after{
-      content:"";
-      position:absolute;
-      width:210px;
-      height:70px;
-      left:80px;
-      top:-30px;
-      border:3px solid rgba(255,255,255,.15);
-      border-radius:999px;
-      transform:rotate(-15deg);
-    }
-
-    header{
-      display:flex;
-      justify-content:space-between;
-      gap:24px;
-      position:relative;
-      z-index:2;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(0,230,173,.18);
-      border:1px solid rgba(0,230,173,.55);
-      border-radius:999px;
-      padding:8px 13px;
-      font-weight:900;
-      font-size:14px;
-    }
-
-    h1{
-      font-size:41px;
-      line-height:.96;
-      margin:10px 0 7px;
-      letter-spacing:-.04em;
-      max-width:540px;
-    }
-
-    .lead{
-      margin:0;
-      color:rgba(255,255,255,.86);
-      font-size:16px;
-      max-width:590px;
-      line-height:1.3;
-    }
-
-    .qrbox{
-      min-width:245px;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.24);
-      border-radius:22px;
-      padding:16px;
-      backdrop-filter:blur(10px);
-    }
-
-    .qrbox b{
-      display:block;
-      font-size:15px;
-      margin-bottom:7px;
-      color:var(--geel);
-    }
-
-    .qrbox p{
-      margin:0;
-      font-size:14px;
-      line-height:1.35;
-      color:rgba(255,255,255,.86);
-    }
-
-    .url{
-      margin-top:10px;
-      display:inline-block;
-      background:var(--wit);
-      color:#20115c;
-      border-radius:12px;
-      padding:9px 12px;
-      font-weight:950;
-      text-decoration:none;
-      font-size:14px;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:11px;
-      margin-top:15px;
-      position:relative;
-      z-index:2;
-      transform:translateY(-8px);
-    }
-
-    .step{
-      min-height:88px;
-      padding:12px 13px;
-      border-radius:18px;
-      background:var(--kaart);
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
-      overflow:hidden;
-    }
-
-    .num{
-      display:inline-grid;
-      place-items:center;
-      width:28px;
-      height:28px;
-      border-radius:10px;
-      background:var(--geel);
-      color:#1b1656;
-      font-weight:1000;
-      margin-right:8px;
-      box-shadow:0 7px 18px rgba(255,231,90,.23);
-      flex-shrink:0;
-    }
-
-    .emoji{
-      font-size:21px;
-      vertical-align:middle;
-      flex-shrink:0;
-    }
-
-    .step h2{
-      display:flex;
-      align-items:center;
-      margin:0 0 5px;
-      font-size:16px;
-      line-height:1.1;
-      white-space:nowrap;
-    }
-
-    .step p{
-      margin:0;
-      color:rgba(255,255,255,.88);
-      font-size:12.8px;
-      line-height:1.25;
-    }
-
-    .highlight{
-      color:var(--geel);
-      font-weight:950;
-    }
-
-    .wide{
-      grid-column:span 2;
-      background:linear-gradient(135deg,rgba(0,230,173,.24),rgba(255,79,216,.17));
-      border-color:rgba(255,255,255,.28);
-    }
-
-    .finish{
-      background:rgba(255,255,255,.92);
-      color:#24115f;
-      border:0;
-    }
-
-    .finish p{color:#2d2865}
-    .finish .highlight{color:#1746ff}
-    .finish .num{background:#1746ff;color:#fff}
-
-    @media print{
-      body{background:white}
-      .poster{box-shadow:none;border-radius:0}
-    }
+    /* Dezelfde 20px lagere plaatsing als op de voorgaande pagina's. */
+    body[data-page="software"] .banner { height: calc(28% + 20px); }
+    body[data-page="software"] .tab-page { height: calc(72% - 20px); }
   </style>
-  <link rel="stylesheet" href="future-preload.css">
 </head>
-
-<body>
-  <main class="poster" aria-label="Stappenplan Office 365 installeren voor Ter AA studenten">
-    <header>
-      <section>
-        <span class="tag">🎒 Nieuwe student bij Ter AA?</span>
-        <h1>Office 365 installeren op je laptop</h1>
-        <p class="lead">Volg deze route op de website en open daarna de handleiding. Klaar? Dan kun je Word, PowerPoint, Excel en Outlook gebruiken.</p>
-      </section>
-
-      <aside class="qrbox">
-        <b>Start hier 👇</b>
-        <p>Open de website van Ter AA en volg de stappen hieronder.</p>
-        <a class="url" href="https://www.ter-aa.nl/">ter-aa.nl</a>
-      </aside>
+<body data-page="software">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Software installeren</h1>
+      <p>Sam maakt zijn laptop klaar voor de opleiding: Office 365 installeren en besturingssystemen downloaden via Azure.</p>
+      <div class="chips">
+        <span>Office 365</span><span>Schoolaccount</span><span>Azure Education</span><span>Zelf controleren</span>
+      </div>
     </header>
-
-    <section class="steps">
-      <article class="step">
-        <h2><span class="num">1</span><span class="emoji">🌐</span>&nbsp;Ga naar de site</h2>
-        <p>Open je browser en ga naar <span class="highlight">ter-aa.nl</span>.</p>
-      </article>
-
-      <article class="step">
-        <h2><span class="num">2</span><span class="emoji">🖱️</span>&nbsp;Menu openen</h2>
-        <p>Ga met je muis over <span class="highlight">MBO &amp; vavo</span>.</p>
-      </article>
-
-      <article class="step">
-        <h2><span class="num">3</span><span class="emoji">👨‍🎓</span>&nbsp;Nieuwe studenten</h2>
-        <p>Klik op <span class="highlight">Voor nieuwe studenten</span>.</p>
-      </article>
-
-      <article class="step wide">
-        <h2><span class="num">4</span><span class="emoji">💻</span>&nbsp;Zoek de Office 365-vraag</h2>
-        <p>Klik op <span class="highlight">Waarom moet ik Office 365 installeren? En hoe doe ik dat?</span></p>
-      </article>
-
-      <article class="step">
-        <h2><span class="num">5</span><span class="emoji">📥</span>&nbsp;Open de PDF</h2>
-        <p>Klik op <span class="highlight">Office 365 installeren</span>.</p>
-      </article>
-
-      <article class="step finish wide">
-        <h2><span class="num">6</span><span class="emoji">🚀</span>&nbsp;Volg de handleiding</h2>
-        <p>Volg de stappen in de PDF rustig één voor één. Daarna ben je klaar om Office 365 te gebruiken.</p>
-      </article>
-
-      <article class="step finish">
-        <h2><span class="num">✓</span><span class="emoji">✅</span>&nbsp;Gelukt?</h2>
-        <p>Je kunt nu aan de slag met <span class="highlight">Word, Excel, PowerPoint en Outlook</span>.</p>
-      </article>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Software onderdelen">
+        <button class="tab-button active" type="button" data-tab="start">Sam gaat aan de slag</button>
+        <button class="tab-button" type="button" data-tab="download">Office downloaden</button>
+        <button class="tab-button" type="button" data-tab="installeren">Office installeren</button>
+        <button class="tab-button" type="button" data-tab="controleren">Werkt alles?</button>
+        <button class="tab-button" type="button" data-tab="azure">Naar Azure Education</button>
+        <button class="tab-button" type="button" data-tab="besturingssysteem">Besturingssysteem downloaden</button>
+        <button class="tab-button" type="button" data-tab="hulp">Hulp en jouw resultaat</button>
+      </nav>
+      <section class="tab-content-area">
+        <article class="tab-content active" id="start">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Online zijn is pas het begin</h2>
+          <p>Sam kan inmiddels inloggen en zijn rooster bekijken. Nu wil hij zijn eerste verslag maken. Hij zoekt Word op zijn laptop, maar ziet alleen een proefversie. “Moet ik dit kopen?” vraagt hij aan de docent.</p>
+          <p>Via Ter AA kan Sam Office-programma’s zoals <strong>Word, Excel en PowerPoint</strong> gratis gebruiken voor zijn studie. Office 365 kom je ook tegen onder de naam <strong>Microsoft 365</strong>.</p>
+          <p>Sam maakt zijn laptop klaar: wifi werkt, zijn oplader zit erin en zijn schoolaccount ligt bij de hand. Eerst Office, daarna bekijken welke besturingssystemen hij voor de ICT-lessen kan downloaden.</p>
+          <div class="note"><strong>Jouw start:</strong> werk op je Windows-laptop met internet en je eigen schoolaccount. Bewaar open bestanden voordat je gaat installeren.</div>
+        </article>
+        <article class="tab-content" id="download">
+          <span class="badge">STAP 1 · OFFICE DOWNLOADEN</span>
+          <h2>Sam volgt de schoolroute</h2>
+          <p>Sam gebruikt de handleiding van Ter AA. Hij werkt rustig en controleert steeds welke knop hij nodig heeft.</p>
+          <ol>
+            <li>Open <strong>start.ter-aa.nl</strong>. Log in met <strong>studentnummer@roc-teraa.nl</strong> en je Ter AA-wachtwoord.</li>
+            <li>Kies linksboven het <strong>Apps-icoon</strong> en daarna <strong>Meer apps</strong>.</li>
+            <li>Kies <strong>Meer apps downloaden</strong> en vervolgens <strong>Start</strong>.</li>
+            <li>Kies <strong>Installeren en meer → Microsoft 365-apps</strong>.</li>
+            <li>Open <strong>Apps en apparaten</strong> en kies bij Office <strong>Kantoor installeren</strong>. Wacht tot <strong>OfficeSetup.exe</strong> is gedownload.</li>
+          </ol>
+          <div class="note"><strong>Andere knoppen?</strong> Microsoft kan ook “Apps installeren” of “Office installeren” tonen. Controleer of je met je schoolaccount bent aangemeld.</div>
+          <a class="action-link" href="https://start.ter-aa.nl" target="_blank" rel="noopener">Open Startpunt</a>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/06/Gebruikersinstructie-OFFICE365-Installeren-op-je-laptop.pdf" target="_blank" rel="noopener">Schoolhandleiding</a>
+        </article>
+        <article class="tab-content" id="installeren">
+          <span class="badge">STAP 2 · OFFICE INSTALLEREN</span>
+          <h2>Een download is nog geen installatie</h2>
+          <p>Sam ziet het bestand in Downloads en wil meteen Word openen. Jayden wijst naar de handleiding: “Je moet het installatiebestand nog starten.”</p>
+          <ol>
+            <li>Open <strong>OfficeSetup.exe</strong> vanuit je browser of de map <strong>Downloads</strong>.</li>
+            <li>Vraagt Windows toestemming om wijzigingen aan te brengen? Kies <strong>Ja</strong> voor dit zojuist gedownloade Office-installatiebestand.</li>
+            <li>Volg de aanwijzingen. Houd internet verbonden terwijl Office wordt geïnstalleerd.</li>
+            <li>Wacht op de melding dat de installatie klaar is en sluit het installatievenster.</li>
+          </ol>
+          <p>Sam wacht geduldig tot alles klaar is. Hij start het bestand niet nog een keer terwijl de installatie loopt.</p>
+          <div class="note"><strong>Onthoud:</strong> downloaden haalt een bestand op. Installeren zet de programma’s op je laptop zodat je ze kunt gebruiken.</div>
+        </article>
+        <article class="tab-content" id="controleren">
+          <span class="badge">STAP 3 · ZELF TESTEN</span>
+          <h2>Sam bewijst dat het werkt</h2>
+          <p>De installatie is klaar, maar Sam wil zeker weten dat hij straks zelfstandig kan werken. Hij controleert de programma’s één voor één.</p>
+          <ol>
+            <li>Zoek via het <strong>Windows-startmenu</strong> naar <strong>Word</strong> en open het programma.</li>
+            <li>Meld je, als dat wordt gevraagd, aan met <strong>studentnummer@roc-teraa.nl</strong> en je schoolwachtwoord.</li>
+            <li>Maak een leeg document, typ een korte tekst en sla het op als <strong>Softwaretest-Sam.docx</strong>. Gebruik zelf jouw naam.</li>
+            <li>Sluit het document en open het opnieuw. Controleer ook of <strong>Excel en PowerPoint</strong> starten.</li>
+          </ol>
+          <p>Sam ziet zijn tekst terug en glimlacht: zijn laptop is klaar voor het eerste verslag.</p>
+          <div class="note"><strong>Jouw resultaat:</strong> de Office-programma’s openen en je kunt een bestand opslaan en terugvinden. Een melding over een ontbrekende licentie? Vraag hulp.</div>
+        </article>
+        <article class="tab-content" id="azure">
+          <span class="badge">EXTRA · AZURE EDUCATION</span>
+          <h2>Sam ontdekt de softwarebibliotheek</h2>
+          <p>Voor een volgende les gaat Sam een besturingssysteem onderzoeken. De docent laat zien dat <strong>Azure Education</strong> ook studiesoftware aanbiedt.</p>
+          <ol>
+            <li>Ga naar <strong>portal.azure.com</strong> en meld je aan met je <strong>schoolaccount</strong>.</li>
+            <li>Zoek bovenin op <strong>Education</strong> en open <strong>Education / Onderwijs</strong>.</li>
+            <li>Kies daar <strong>Software</strong> om het beschikbare aanbod te bekijken.</li>
+            <li>Volg een eventuele controle van je studentstatus met je schoolgegevens.</li>
+          </ol>
+          <div class="note"><strong>Toegang nodig:</strong> je account moet toegang hebben via Azure Dev Tools for Teaching of een passend studentenaanbod. Geen Software of geen toegang? Vraag je docent welke schooltoegang je moet gebruiken.</div>
+          <a class="action-link" href="https://portal.azure.com" target="_blank" rel="noopener">Open Azure Portal</a>
+          <a class="resource-link" href="https://azureforeducation.microsoft.com/devtools" target="_blank" rel="noopener">Azure Education</a>
+        </article>
+        <article class="tab-content" id="besturingssysteem">
+          <span class="badge">EXTRA · EEN BESTURINGSSYSTEEM OPHALEN</span>
+          <h2>Sam kiest de juiste versie</h2>
+          <p>Sam zoekt bij Software naar <strong>Windows 11 Education</strong> of <strong>Windows Server</strong>. Welke versies beschikbaar zijn, hangt af van zijn onderwijsrechten en het actuele aanbod.</p>
+          <ol>
+            <li>Zoek het besturingssysteem dat de docent voor de opdracht noemt.</li>
+            <li>Open het product en controleer <strong>versie, taal en systeemeisen</strong>.</li>
+            <li>Bekijk, als die wordt aangeboden, de <strong>productsleutel</strong> en bewaar deze privé met de productnaam.</li>
+            <li>Kies <strong>Downloaden / Download</strong> en wacht tot het bestand volledig binnen is.</li>
+          </ol>
+          <p>Een <strong>ISO-bestand</strong> bevat de installatiebestanden van het besturingssysteem. Sam bewaart het voor de les waarin hij met een oefen-pc of virtuele machine gaat werken.</p>
+          <div class="note"><strong>Jouw stap:</strong> download het afgesproken product. Installeer het besturingssysteem daarna volgens de lesopdracht. De productsleutel hoort bij de gekozen editie; houd hem voor jezelf.</div>
+        </article>
+        <article class="tab-content" id="hulp">
+          <span class="badge">JOUW RESULTAAT</span>
+          <h2>Sam helpt door goed te kijken</h2>
+          <p>Bij Jayden ontbreekt de installatieknop. Sam gaat niet willekeurig klikken. Hij controleert eerst welk account rechtsboven staat en vraagt welke melding Jayden ziet.</p>
+          <ul>
+            <li><strong>Office:</strong> controleer je schoolaccount. Ontbreekt de installatieoptie, laat dan de schoollicentie controleren.</li>
+            <li><strong>Azure:</strong> laat je docent de onderwijsrechten controleren wanneer Software of het gevraagde product ontbreekt.</li>
+            <li><strong>Download:</strong> controleer internet, vrije opslagruimte en of het bestand volledig is binnengekomen.</li>
+          </ul>
+          <p>Bewaar als bewijs een afbeelding van je Office-test en, als de opdracht dat vraagt, de bestandsnaam van je ISO-download. Laat wachtwoorden en productsleutels buiten beeld.</p>
+          <div class="note"><strong>Hulp nodig?</strong> Vertel wat je probeerde en welke foutmelding je ziet. Vraag je docent of bel het Ter AA-Servicepunt: <strong>0492 – 50 79 08</strong>.</div>
+          <a class="resource-link" href="https://www.ter-aa.nl/voor-nieuwe-studenten" target="_blank" rel="noopener">Uitleg Ter AA</a>
+          <a class="resource-link" href="https://learn.microsoft.com/nl-nl/azure/education-hub/azure-dev-tools-teaching/download-software" target="_blank" rel="noopener">Uitleg Azure</a>
+        </article>
+      </section>
     </section>
   </main>
-<script src="route-nav.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
 </body>
 </html>

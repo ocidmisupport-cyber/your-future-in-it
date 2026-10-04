@@ -1,103 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=1000, initial-scale=1" />
-<title>Inloggen bij Ter AA</title>
-<style>
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    min-height:100vh;
-    display:grid;
-    place-items:center;
-    background:#111827;
-    font-family:Arial, Helvetica, sans-serif;
-    color:white;
-  }
-  .stage{width:1000px;height:500px;position:relative;overflow:hidden;border-radius:28px;box-shadow:0 25px 70px rgba(0,0,0,.45)}
-  .slide{
-    position:absolute;inset:0;
-    width:1000px;height:500px;
-    overflow:hidden;
-    padding:28px 42px;
-    transition:opacity .8s ease, transform .8s ease;
-  }
-  .intro{
-    background:
-      radial-gradient(circle at 14% 18%, #60a5fa 0 10%, transparent 26%),
-      radial-gradient(circle at 86% 20%, #22c55e 0 10%, transparent 26%),
-      linear-gradient(135deg,#0f172a,#1d4ed8 48%,#0ea5e9);
-    z-index:2;
-    animation:hideIntro .8s ease 5s forwards;
-  }
-  .funny{
-    opacity:0;
-    transform:scale(.96);
-    background:
-      radial-gradient(circle at 12% 18%, #ff4fd8 0 9%, transparent 25%),
-      radial-gradient(circle at 88% 15%, #38bdf8 0 10%, transparent 26%),
-      radial-gradient(circle at 78% 88%, #a3e635 0 9%, transparent 25%),
-      linear-gradient(135deg,#4f46e5,#7c3aed 45%,#db2777);
-    animation:showFunny .8s ease 5s forwards;
-  }
-  @keyframes hideIntro{to{opacity:0;transform:scale(1.04);pointer-events:none}}
-  @keyframes showFunny{to{opacity:1;transform:scale(1)}}
-  .badge{display:inline-block;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.4);padding:8px 16px;border-radius:999px;font-size:20px;font-weight:800;transform:rotate(-2deg)}
-  h1{margin:18px 0 8px;font-size:52px;line-height:.92;letter-spacing:-2px;text-shadow:0 5px 0 rgba(0,0,0,.18)}
-  .intro h1{font-size:50px;max-width:700px}
-  .sub{margin:0;max-width:670px;font-size:23px;line-height:1.16;font-weight:700}
-  .steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:22px;max-width:710px}
-  .step,.card{background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);border-radius:20px;padding:13px 15px;backdrop-filter:blur(8px)}
-  .step{min-height:112px}.card{min-height:98px}
-  .emoji{font-size:31px;display:block;margin-bottom:3px}.step b,.card b{font-size:18px;display:block;margin-bottom:4px}.step span,.card span{font-size:14px;line-height:1.18;display:block}
-  .loader{position:absolute;left:42px;bottom:26px;width:600px;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.35);border-radius:999px;height:25px;overflow:hidden}
-  .loader:before{content:"";display:block;height:100%;width:0;background:white;border-radius:999px;animation:load 5s linear forwards}
-  @keyframes load{to{width:100%}}
-  .wait{position:absolute;left:660px;bottom:20px;font-size:20px;font-weight:900;background:#facc15;color:#111827;padding:13px 18px;border-radius:18px;transform:rotate(2deg)}
-  .biglock{position:absolute;right:70px;top:95px;width:180px;height:180px;border-radius:34px;background:#facc15;border:7px solid #111827;box-shadow:0 14px 0 rgba(0,0,0,.2)}
-  .biglock:before{content:"";position:absolute;left:40px;top:-82px;width:90px;height:90px;border:18px solid #facc15;border-bottom:0;border-radius:60px 60px 0 0;filter:drop-shadow(0 -7px 0 #111827)}
-  .keyhole{position:absolute;left:76px;top:58px;width:30px;height:30px;background:#111827;border-radius:50%}.keyhole:after{content:"";position:absolute;left:9px;top:22px;width:12px;height:45px;background:#111827;border-radius:8px}
-  .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px;max-width:650px}
-  .monster{position:absolute;right:44px;bottom:34px;width:205px;height:205px;background:#facc15;border-radius:44% 56% 50% 50%;border:7px solid #111827;box-shadow:0 13px 0 rgba(0,0,0,.2);transform:rotate(5deg)}
-  .eye{position:absolute;top:54px;width:54px;height:54px;background:#fff;border:5px solid #111827;border-radius:50%}.eye.left{left:42px}.eye.right{right:42px}.eye:after{content:"";position:absolute;left:17px;top:17px;width:14px;height:14px;background:#111827;border-radius:50%}
-  .mouth{position:absolute;left:58px;bottom:48px;width:104px;height:48px;background:#111827;border-radius:0 0 60px 60px}.tooth{position:absolute;top:0;width:18px;height:24px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}.t1{left:26px}.t2{right:26px}
-  .bubble{position:absolute;right:178px;top:64px;width:250px;background:white;color:#111827;border-radius:22px;padding:15px 18px;font-size:20px;font-weight:900;box-shadow:0 10px 0 rgba(0,0,0,.18);transform:rotate(3deg)}
-  .bubble:after{content:"";position:absolute;right:26px;bottom:-21px;border:13px solid transparent;border-top-color:white}
-  .footer{position:absolute;left:42px;right:300px;bottom:22px;font-size:20px;line-height:1.15;font-weight:900;background:rgba(0,0,0,.38);border:2px solid rgba(255,255,255,.35);padding:12px 18px;border-radius:18px;z-index:5}
-</style>
-  <link rel="stylesheet" href="future-preload.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inloggen | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dezelfde 20px lagere plaatsing als Welkom, Afspraken en ICT. */
+    body[data-page="inloggen"] .banner { height: calc(28% + 20px); }
+    body[data-page="inloggen"] .tab-page { height: calc(72% - 20px); }
+  </style>
 </head>
-<body>
-  <main class="stage" aria-label="Inloggen bij Ter AA">
-    <section class="slide intro" aria-label="Eerste pagina: hoe log je in">
-      <div class="badge">Superbelangrijke login-instructie</div>
-      <h1>Hoe log je in bij Ter AA?</h1>
-      <p class="sub">Pak je beste concentratiegezicht erbij. We gaan nu heel serieus uitleggen hoe je binnenkomt op een pagina waar je blijkbaar al binnen bent.</p>
-      <section class="steps">
-        <div class="step"><span class="emoji">👀</span><b>Stap 1</b><span>Kijk aandachtig naar deze tekst. Niet knipperen. Dit is digitaal bewijs.</span></div>
-        <div class="step"><span class="emoji">🔐</span><b>Stap 2</b><span>Controleer of je bent ingelogd door te kijken of je dit kunt lezen.</span></div>
-        <div class="step"><span class="emoji">⏳</span><b>Stap 3</b><span>Wacht 5 seconden op de totaal onverwachte conclusie.</span></div>
+<body data-page="inloggen">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Inloggen bij Ter AA</h1>
+      <p>Sam wil aan de slag. Eerst verbinding maken, inloggen en ontdekken waar zijn rooster en schoolmail staan.</p>
+      <div class="chips">
+        <span>Jouw account</span><span>Wifi</span><span>Startpunt</span><span>Veilig inloggen</span>
+      </div>
+    </header>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Inloggen onderdelen">
+        <button class="tab-button active" type="button" data-tab="account">Jouw inloggegevens</button>
+        <button class="tab-button" type="button" data-tab="wifi">Verbinden met wifi</button>
+        <button class="tab-button" type="button" data-tab="startpunt">Startpunt en rooster</button>
+        <button class="tab-button" type="button" data-tab="mail">Jouw schoolmail</button>
+        <button class="tab-button" type="button" data-tab="wachtwoord">Wachtwoord en hulp</button>
+      </nav>
+      <section class="tab-content-area">
+        <article class="tab-content active" id="account">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>De sleutel tot je schoolaccount</h2>
+          <p>Sam heeft de beamer aan de praat gekregen, maar nu moet hij zelf inloggen. “Waar staan mijn gegevens?” vraagt hij. Hij zoekt in zijn privémail en vindt het bericht van Ter AA dat bij zijn aanmelding hoort.</p>
+          <p>Zijn gebruikersnaam is <strong>studentnummer@roc-teraa.nl</strong>. Daar hoort zijn <strong>Ter AA-wachtwoord</strong> bij. Sam neemt de gegevens zorgvuldig over.</p>
+          <p>Jayden wil even meekijken. Sam draait zijn scherm iets weg voordat hij het wachtwoord invoert. Helpen mag natuurlijk, maar een wachtwoord blijft van jezelf.</p>
+          <div class="note"><strong>Jouw stap:</strong> zoek de mail met je inloggegevens op het privémailadres van je aanmelding. Deel je wachtwoord niet.</div>
+        </article>
+        <article class="tab-content" id="wifi">
+          <span class="badge">EERST VERBINDING MAKEN</span>
+          <h2>Sam is nog niet online</h2>
+          <p>Sam opent een website, maar er verschijnt niets. Hij wil meteen opnieuw inloggen. Dan denkt hij aan zijn eerste storing: eerst kijken. Bij het wifi-symbool ziet hij dat zijn laptop nog geen verbinding heeft.</p>
+          <p>Op school kiest Sam <strong>Ter-AA-WIFI</strong>. Hier gebruikt hij alleen zijn <strong>studentnummer</strong> als gebruikersnaam, met het wachtwoord dat hij per mail ontving.</p>
+          <p>“Dus hier hoef ik niet het hele adres in te vullen,” zegt Sam. Na het verbinden opent hij de website nog eens. Nu werkt het wel.</p>
+          <div class="note"><strong>Jouw stap:</strong> kies Ter-AA-WIFI, vul je studentnummer en wachtwoord in en controleer of je online bent.</div>
+        </article>
+        <article class="tab-content" id="startpunt">
+          <span class="badge">JE DIGITALE STARTPLEK</span>
+          <h2>Waar moet Sam morgen zijn?</h2>
+          <p>Sam is online en wil weten in welk lokaal zijn volgende les is. Jayden denkt het nog te weten, maar Sam wil het liever zelf controleren.</p>
+          <p>Hij opent <strong>Startpunt student</strong> en meldt zich aan met zijn schoolaccount. Via de tegel <strong>Eduarte</strong> vindt hij zijn rooster, aanwezigheid en examenresultaten.</p>
+          <p>Sam bekijkt welke les hij heeft en waar hij moet zijn. “Handiger dan gokken,” zegt hij tegen Jayden. Hij bewaart Startpunt als favoriet.</p>
+          <div class="note"><strong>Jouw stap:</strong> open Startpunt, kies Eduarte en zoek je eerstvolgende les op.</div>
+          <a class="action-link" href="https://rocteraa365.sharepoint.com/sites/intranetstudent" target="_blank" rel="noopener">Open Startpunt student</a>
+        </article>
+        <article class="tab-content" id="mail">
+          <span class="badge">BERICHTEN VAN SCHOOL</span>
+          <h2>Twee adressen, één Sam</h2>
+          <p>Sam verwacht een bericht van school en kijkt in zijn privémail. Daar staat het niet. Hij opent daarom in Startpunt de tegel <strong>Outlook</strong>.</p>
+          <p>Voor het inloggen gebruikt hij <strong>studentnummer@roc-teraa.nl</strong> en zijn Ter AA-wachtwoord. Zijn <strong>schoolmailadres</strong> is <strong>studentnummer@ter-aa.nl</strong>. Sam merkt dat die adressen op elkaar lijken, maar verschillen.</p>
+          <p>Hij vindt het schoolbericht en leest het rustig. Voortaan controleert hij ook zijn schoolmail, zodat hij belangrijke informatie niet mist.</p>
+          <div class="note"><strong>Onthoud:</strong> inloggen met @roc-teraa.nl; schoolmail ontvangen op @ter-aa.nl. Vervang “studentnummer” door je eigen nummer.</div>
+          <a class="action-link" href="https://outlook.office.com/" target="_blank" rel="noopener">Open Outlook</a>
+        </article>
+        <article class="tab-content" id="wachtwoord">
+          <span class="badge">VEILIG VERDER WERKEN</span>
+          <h2>Sam kiest een eigen wachtwoord</h2>
+          <p>Na zijn eerste login wijzigt Sam zijn wachtwoord. Hij kiest iets dat hij goed kan onthouden en voor zichzelf houdt.</p>
+          <p>Voor wijzigen of herstellen gaat Sam naar <strong>wachtwoordvergeten.ter-aa.nl</strong>. Hij vult zijn schoolaccount in, neemt de controletekens over en kiest een herstelmethode. Daarna gebruikt hij de ontvangen code en bevestigt zijn nieuwe wachtwoord.</p>
+          <p>Jayden komt er niet uit. Sam vraagt welke melding hij krijgt. Samen bekijken ze de uitleg. Blijft het misgaan? Het <strong>Servicepunt</strong> is bereikbaar op <strong>0492 – 50 79 08</strong>.</p>
+          <div class="note"><strong>Jouw stap:</strong> wijzig je eerste wachtwoord. Deel ook herstelcodes niet. Vraag bij problemen hulp en vertel welke foutmelding je ziet.</div>
+          <a class="action-link" href="http://wachtwoordvergeten.ter-aa.nl" target="_blank" rel="noopener">Wachtwoord herstellen</a>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/06/Handleiding-Wachtwoord-opnieuw-instellen-1.pdf" target="_blank" rel="noopener">Handleiding</a>
+          <a class="resource-link" href="https://www.ter-aa.nl/voor-nieuwe-studenten" target="_blank" rel="noopener">Uitleg Ter AA</a>
+        </article>
       </section>
-      <div class="biglock"><div class="keyhole"></div></div>
-      <div class="loader"></div>
-      <div class="wait">Momentje... 🤓</div>
-    </section>
-
-    <section class="slide funny" aria-label="Grappige conclusie over inloggen bij Ter AA">
-      <div class="badge">Handleiding: inloggen bij Ter AA</div>
-      <h1>Gefeliciteerd!<br>Je bent al binnen.</h1>
-      <p class="sub">Als je deze pagina kunt lezen, is de geheime digitale poort blijkbaar al open. Dus deze uitleg is ongeveer net zo nodig als een paraplu in een zwembad.</p>
-      <section class="cards">
-        <div class="card"><span class="emoji">🔐</span><b>Stap 1</b><span>Kijk naar het scherm. Zie je tekst? Mooi. Je bent ingelogd.</span></div>
-        <div class="card"><span class="emoji">🧠</span><b>Stap 2</b><span>Doe alsof dit heel technisch was. Knik professioneel.</span></div>
-        <div class="card"><span class="emoji">🎉</span><b>Stap 3</b><span>Vier je succes met een denkbeeldige confettikanon-click.</span></div>
-      </section>
-      <div class="bubble">Wacht... jij leest dit? Dan werkt het dus al. 🤯</div>
-      <div class="monster"><div class="eye left"></div><div class="eye right"></div><div class="mouth"><div class="tooth t1"></div><div class="tooth t2"></div></div></div>
-      <div class="footer">Conclusie: je hoeft niet meer in te loggen. Niet uitloggen, gewoon doorgaan. 🚀</div>
     </section>
   </main>
-<script src="route-nav.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
 </body>
 </html>

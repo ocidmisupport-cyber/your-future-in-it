@@ -1,299 +1,97 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crazy 88 Helmond</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crazy 88 | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111827;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .pagina {
-      width: 1000px;
-      height: 500px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      color: white;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(34,211,238,0.38), transparent 28%),
-        radial-gradient(circle at 88% 18%, rgba(244,63,94,0.38), transparent 30%),
-        radial-gradient(circle at 84% 88%, rgba(250,204,21,0.28), transparent 26%),
-        linear-gradient(135deg, #111827 0%, #312e81 42%, #be123c 78%, #f97316 100%);
-      box-shadow: 0 24px 55px rgba(0,0,0,0.45);
-    }
-
-    .pagina::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.12);
-      z-index: 1;
-    }
-
-    .decoratie {
-      position: absolute;
-      z-index: 1;
-      color: rgba(255,255,255,0.10);
-      font-weight: 900;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .d1 {
-      right: 40px;
-      top: 22px;
-      font-size: 64px;
-    }
-
-    .d2 {
-      left: 50px;
-      bottom: 18px;
-      font-size: 28px;
-      letter-spacing: 3px;
-    }
-
-    .inhoud {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      height: 100%;
-      padding: 32px 42px 28px;
-      display: grid;
-      grid-template-rows: 130px 250px 56px;
-      gap: 12px;
-    }
-
-    .kop {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 7px 15px;
-      border-radius: 999px;
-      background: #facc15;
-      color: #111827;
-      font-size: 15px;
-      font-weight: 900;
-      margin-bottom: 9px;
-      box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 52px;
-      line-height: 0.95;
-      text-shadow: 5px 5px 0 rgba(0,0,0,0.22);
-    }
-
-    .subtitel {
-      margin: 9px 0 0;
-      width: 610px;
-      font-size: 18px;
-      line-height: 1.28;
-      color: #e0f2fe;
-      font-weight: 800;
-    }
-
-    .scorekaart {
-      height: 120px;
-      padding: 17px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.95);
-      color: #111827;
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.24);
-    }
-
-    .scorekaart h2 {
-      margin: 0 0 8px;
-      font-size: 24px;
-      color: #be123c;
-    }
-
-    .scorekaart p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.32;
-      font-weight: 800;
-    }
-
-    .midden {
-      display: grid;
-      grid-template-columns: 285px 1fr;
-      gap: 18px;
-      min-height: 0;
-    }
-
-    .introkaart {
-      height: 250px;
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(15,23,42,0.88);
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
-    }
-
-    .introkaart h2 {
-      margin: 0 0 12px;
-      font-size: 29px;
-      color: #67e8f9;
-    }
-
-    .introkaart p {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.36;
-      font-weight: 700;
-      color: #f8fafc;
-    }
-
-    .kaarten {
-      height: 250px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .kaart {
-      min-height: 118px;
-      padding: 15px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.96);
-      color: #111827;
-      box-shadow: 7px 7px 0 rgba(0,0,0,0.20);
-      border-left: 8px solid #38bdf8;
-    }
-
-    .kaart:nth-child(2) { border-left-color: #facc15; }
-    .kaart:nth-child(3) { border-left-color: #22c55e; }
-    .kaart:nth-child(4) { border-left-color: #fb7185; }
-
-    .kaart h3 {
-      margin: 0 0 7px;
-      font-size: 21px;
-      color: #111827;
-    }
-
-    .kaart p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.28;
-      font-weight: 700;
-    }
-
-    .onder {
-      display: grid;
-      grid-template-columns: 1fr 190px;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .cta-tekst {
-      height: 46px;
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.94);
-      color: #111827;
-      font-size: 18px;
-      font-weight: 900;
-      box-shadow: 6px 6px 0 rgba(0,0,0,0.22);
-    }
-
-    .cta-knop {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #bef264);
-      color: #052e16;
-      font-size: 22px;
-      font-weight: 900;
-      box-shadow: 6px 6px 0 rgba(0,0,0,0.25);
-    }
+    /* Dezelfde plaatsing als de andere pagina's: 20px lager. */
+    body[data-page="crazy88"] .banner { height: calc(28% + 20px); }
+    body[data-page="crazy88"] .tab-page { height: calc(72% - 20px); }
   </style>
-  <link rel="stylesheet" href="future-preload.css">
 </head>
-
-<body>
-  <main class="pagina">
-    <div class="decoratie d1">88</div>
-    <div class="decoratie d2">TEAMWORK • FUN • HELMOND</div>
-
-    <div class="inhoud">
-      <section class="kop">
-        <div>
-          <div class="label">ICT Klas IC.26mi.a</div>
-          <h1>Crazy 88 Helmond</h1>
-          <p class="subtitel">
-            Werk samen, ontdek de stad en voer met je team zoveel mogelijk creatieve challenges uit.
-          </p>
-        </div>
-
-        <div class="scorekaart">
-          <h2>Doel van het spel</h2>
-          <p>
-            Verzamel punten door opdrachten uit te voeren. Slim samenwerken geeft je team meer kans om te winnen.
-          </p>
-        </div>
-      </section>
-
-      <section class="midden">
-        <article class="introkaart">
-          <h2>Waarom meedoen?</h2>
-          <p>
-            Crazy 88 is actief, grappig en creatief. Je leert je klas beter kennen,
-            ontdekt Helmond en laat zien hoe goed jouw team kan samenwerken.
-          </p>
+<body data-page="crazy88">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Crazy 88: Helmond als speelveld</h1>
+      <p>Sam gaat met zijn team de stad in. 88 gekke opdrachten, nieuwe klasgenoten en een middag vol verrassingen!</p>
+      <div class="chips">
+        <span>Let’s Connect</span><span>Helmond ontdekken</span><span>Teamwork</span><span>88 opdrachten</span>
+      </div>
+    </header>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Crazy 88 onderdelen">
+        <button class="tab-button active" type="button" data-tab="start">Sam gaat de stad in</button>
+        <button class="tab-button" type="button" data-tab="opdrachten">88 gekke opdrachten</button>
+        <button class="tab-button" type="button" data-tab="team">Leer je team kennen</button>
+        <button class="tab-button" type="button" data-tab="jury">WhatsApp en de jury</button>
+        <button class="tab-button" type="button" data-tab="voorbereiden">Klaar voor vertrek</button>
+        <button class="tab-button" type="button" data-tab="afsluiting">Samen afsluiten</button>
+      </nav>
+      <section class="tab-content-area">
+        <article class="tab-content active" id="start">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Helmond kleurt in de kleuren van Ter AA</h2>
+          <p>Sam ziet overal studenten in gekleurde shirts. Vandaag blijft zijn klas niet in het lokaal: tijdens Crazy 88 gaan ze Helmond ontdekken.</p>
+          <p>Met zijn team voert Sam gekke opdrachten uit. Onderweg leert hij de stad én zijn klasgenoten beter kennen. Wie bedenkt een slim plan? Wie durft iets nieuws te proberen?</p>
+          <div class="note"><strong>Het doel:</strong> plezier maken, samenwerken en kennismaken. Je hoeft niet iedereen al te kennen om samen een goed team te vormen.</div>
+          <a class="resource-link" href="https://ditishelmond.nl/crazy-88-met-ter-aa-950-studenten-overspoelen-centrum-van-helmond/" target="_blank" rel="noopener">Bekijk een verslag van Crazy 88</a>
         </article>
-
-        <section class="kaarten">
-          <article class="kaart">
-            <h3>🤝 Samenwerken</h3>
-            <p>Iedereen helpt mee: plannen, bedenken, filmen, zoeken of presenteren.</p>
-          </article>
-
-          <article class="kaart">
-            <h3>🎯 Challenges</h3>
-            <p>Voer veilige, grappige en slimme opdrachten uit. Creativiteit levert punten op.</p>
-          </article>
-
-          <article class="kaart">
-            <h3>📍 Helmond ontdekken</h3>
-            <p>Gebruik herkenbare plekken in de stad als decor voor jullie opdrachten.</p>
-          </article>
-
-          <article class="kaart">
-            <h3>🏆 Punten scoren</h3>
-            <p>Maak bewijs met foto of video. Het team met de meeste punten wint.</p>
-          </article>
-        </section>
+        <article class="tab-content" id="opdrachten">
+          <span class="badge">DE UITDAGING</span>
+          <h2>88 opdrachten… waar beginnen we?</h2>
+          <p>Sam bekijkt de opdrachtenlijst. “Dat zijn er veel!” zegt hij. Zijn team leest eerst rustig en kiest samen waarmee het begint.</p>
+          <p>Jullie proberen zoveel mogelijk opdrachten uit te voeren. Daarvoor heb je creativiteit, lef en overleg nodig. De echte opdrachten en spelregels krijg je van de organisatie.</p>
+          <p>Sam merkt dat eerst lezen tijd scheelt: je wilt niet achteraf ontdekken dat je een belangrijk stukje van de opdracht hebt gemist.</p>
+          <div class="note"><strong>Jouw aanpak:</strong> lees, overleg, voer uit en controleer wat je bij de jury moet aanleveren. Houd de beschikbare tijd in de gaten.</div>
+        </article>
+        <article class="tab-content" id="team">
+          <span class="badge">SAMEN KOM JE VERDER</span>
+          <h2>Iedereen heeft iets te bieden</h2>
+          <p>Jayden wil meteen vertrekken. Sam stelt voor de taken te verdelen: iemand leest de opdracht, iemand houdt de route en tijd bij en iemand verzorgt het jurycontact.</p>
+          <p>Bij de volgende opdracht wisselen ze. Zo krijgt iedereen een rol. Sam ontdekt dat een stille klasgenoot juist verrassend goede ideeën heeft.</p>
+          <div class="note"><strong>Teamafspraak:</strong> blijf bij elkaar, luister naar iedereen en moedig elkaar aan. Kies een aanpak waar je team achter staat.</div>
+          <p><strong>Ook in ICT:</strong> afspraken maken, duidelijk communiceren en elkaar helpen komen later bij projecten opnieuw van pas.</p>
+        </article>
+        <article class="tab-content" id="jury">
+          <span class="badge">CONTACT HOUDEN</span>
+          <h2>Sam stuurt een duidelijk bericht</h2>
+          <p>Het team communiceert via <strong>WhatsApp</strong> met de jury. Sam controleert bij de uitleg welk nummer of welke groep ze moeten gebruiken.</p>
+          <p>Hij vermeldt de teamnaam en het opdrachtnummer. Vraagt de opdracht om een foto of filmpje? Dan stuurt hij dat volgens de aanwijzingen mee.</p>
+          <p>Daarna houdt Sam de reacties van de jury in de gaten. Hij stuurt geen losse grappen tussendoor, zodat het contact overzichtelijk blijft.</p>
+          <div class="note"><strong>Jouw bericht:</strong> welk team, welke opdracht en het gevraagde bewijs. Vraag toestemming voordat je anderen herkenbaar fotografeert of filmt.</div>
+        </article>
+        <article class="tab-content" id="voorbereiden">
+          <span class="badge">VOOR JE OP PAD GAAT</span>
+          <h2>Sam checkt zijn spullen</h2>
+          <p>Sam wil niet halverwege ontdekken dat zijn telefoon leeg is. Voor vertrek controleert hij wat hij nodig heeft.</p>
+          <ul>
+            <li>Lees het schoolbericht over tijd, verzamelplek en benodigdheden.</li>
+            <li>Laad je telefoon op en controleer of WhatsApp werkt.</li>
+            <li>Draag schoenen waarmee je prettig kunt lopen.</li>
+            <li>Luister naar de uitleg en spreek af wie het jurycontact verzorgt.</li>
+          </ul>
+          <div class="note"><strong>In de stad:</strong> houd rekening met verkeer, bewoners en winkels. Doe opdrachten veilig en respecteer het als iemand niet wil meedoen.</div>
+        </article>
+        <article class="tab-content" id="afsluiting">
+          <span class="badge">EEN MIDDAG OM OP TERUG TE KIJKEN</span>
+          <h2>Van onbekenden naar teamgenoten</h2>
+          <p>Na de opdrachten komt Sams team weer samen op de afgesproken plek. Ze hebben nieuwe plekken gezien en vooral veel gelachen.</p>
+          <p>Er is een ijsje en drinken. Na afloop sluiten jullie af met <strong>frites en een snack</strong>. Sam en Jayden bespreken welke opdracht het grappigst was en wie hen verraste.</p>
+          <p>Sam kent Helmond nu beter. Maar minstens zo belangrijk: hij weet met wie hij straks in de klas kan samenwerken.</p>
+          <div class="note"><strong>Jouw terugblik:</strong> welke plek ontdekte je, wat deed jij voor je team en wat leerde je over een klasgenoot?</div>
+        </article>
       </section>
-
-      <section class="onder">
-        <div class="cta-tekst">Durf jij creatief, snel en slim te zijn?</div>
-        <div class="cta-knop">Doe mee!</div>
-      </section>
-    </div>
+    </section>
   </main>
-<script src="route-nav.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
 </body>
 </html>

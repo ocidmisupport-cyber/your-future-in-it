@@ -1,49 +1,122 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=1000, initial-scale=1.0" />
-<title>Ziekmelden bij Ter AA</title>
-<style>
-  *{box-sizing:border-box} body{margin:0;font-family:Arial, Helvetica, sans-serif;background:#111827;display:grid;place-items:center;height:100vh;color:#fff}.slide{width:1000px;height:500px;overflow:hidden;position:relative;background:linear-gradient(135deg,#172554 0%,#0f766e 55%,#84cc16 100%);border-radius:26px;padding:28px;box-shadow:0 18px 50px rgba(0,0,0,.35)}.blob{position:absolute;border-radius:50%;filter:blur(1px);opacity:.22}.b1{width:240px;height:240px;background:#fff;right:-70px;top:-70px}.b2{width:180px;height:180px;background:#facc15;left:-40px;bottom:-60px}h1{margin:0 0 8px;font-size:42px;line-height:1;font-weight:900;text-shadow:0 3px 0 rgba(0,0,0,.18)}.subtitle{font-size:18px;margin:0 0 18px;max-width:790px;font-weight:700}.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:2}.card{background:rgba(255,255,255,.93);color:#102033;border-radius:22px;padding:20px 22px;min-height:318px;box-shadow:0 10px 24px rgba(0,0,0,.18);border:3px solid rgba(255,255,255,.75)}.card h2{font-size:34px;margin:0 0 8px;display:flex;align-items:center;gap:10px}.tag{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:999px;padding:6px 12px;font-size:14px;font-weight:900;margin-bottom:10px}.card.plus .tag{background:#dcfce7;color:#166534}.bigline{font-size:22px;font-weight:900;margin:4px 0 12px}.steps{margin:0;padding-left:21px;font-size:17px;line-height:1.35}.steps li{margin:6px 0}.note{margin-top:12px;background:#fef3c7;border-left:7px solid #f59e0b;padding:10px 12px;border-radius:12px;font-size:15px;font-weight:800;color:#713f12}.footer{position:absolute;right:28px;bottom:17px;font-size:13px;font-weight:800;opacity:.9}.emoji{font-size:38px}.pill{position:absolute;top:25px;right:28px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:9px 14px;border-radius:999px;font-weight:900;z-index:3}
-</style>
-  <link rel="stylesheet" href="future-preload.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziekmelden en verlof | Your future in ICT</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dezelfde 20px lagere plaatsing als op de voorgaande pagina's. */
+    body[data-page="ziekmelden"] .banner { height: calc(28% + 20px); }
+    body[data-page="ziekmelden"] .tab-page { height: calc(72% - 20px); }
+  </style>
 </head>
-<body>
-  <main class="slide" role="img" aria-label="Uitleg ziekmelden bij Ter AA, keuze tussen jonger dan 18 en 18 plus">
-    <div class="blob b1"></div><div class="blob b2"></div>
-    <div class="pill">Ter AA • ziekmelden</div>
-    <h1>🤒 Ziekmelden? Zo fix je dat.</h1>
-    <p class="subtitle">Even geen school vandaag? Kies hieronder wat voor jou geldt. Dan weet je meteen wie de ziekmelding moet doen.</p>
-
-    <section class="cards">
-      <article class="card">
-        <h2><span class="emoji">🧑‍🦱</span> 18-</h2>
-        <span class="tag">Tot je 18e verjaardag</span>
-        <p class="bigline">Je ouder/verzorger meldt jou ziek.</p>
-        <ol class="steps">
-          <li>Vertel thuis dat je ziek bent.</li>
-          <li>Je ouder/verzorger gaat naar het <strong>Eduarte Ouderportaal</strong>.</li>
-          <li>Daar wordt jouw ziekmelding doorgegeven.</li>
-        </ol>
-        <div class="note">Kort gezegd: jij appt thuis, thuis regelt Eduarte. Teamwork. 💪</div>
-      </article>
-
-      <article class="card plus">
-        <h2><span class="emoji">🎓</span> 18+</h2>
-        <span class="tag">Vanaf je 18e verjaardag</span>
-        <p class="bigline">Je meldt jezelf ziek via Eduarte.</p>
-        <ol class="steps">
-          <li>Log in op het <strong>Eduarte Studentenportaal</strong>.</li>
-          <li>Klik links op <strong>Presentie</strong>.</li>
-          <li>Klik op <strong>Overzicht</strong>.</li>
-          <li>Klik rechtsboven op <strong>Absentie toevoegen</strong>.</li>
-          <li>Controleer datum/tijd en klik op <strong>Opslaan</strong>.</li>
-        </ol>
-      </article>
+<body data-page="ziekmelden">
+  <main class="tab-wrapper">
+    <header class="banner">
+      <h1>Ziekmelden, verlof en ouderportaal</h1>
+      <p>Sam ontdekt hoe je afwezigheid goed regelt en wat er verandert als je 18 wordt.</p>
+      <div class="chips">
+        <span>Ziekmelden</span><span>Verlof aanvragen</span><span>Ouderportaal</span><span>Zelf regelen</span>
+      </div>
+    </header>
+    <section class="tab-page">
+      <nav class="tab-menu" aria-label="Ziekmelden en verlof onderdelen">
+        <button class="tab-button active" type="button" data-tab="start">Sam kan niet komen</button>
+        <button class="tab-button" type="button" data-tab="ziekonder18">Ziekmelden: onder 18</button>
+        <button class="tab-button" type="button" data-tab="ziekvanaf18">Ziekmelden: vanaf 18</button>
+        <button class="tab-button" type="button" data-tab="verlof">Verlof aanvragen</button>
+        <button class="tab-button" type="button" data-tab="ouders">Het ouderportaal</button>
+        <button class="tab-button" type="button" data-tab="toestemming">18 jaar: jouw keuze</button>
+      </nav>
+      <section class="tab-content-area">
+        <article class="tab-content active" id="start">
+          <span class="badge">HET VERHAAL VAN SAM</span>
+          <h2>Alleen een berichtje is niet genoeg</h2>
+          <p>Sam wordt wakker en voelt zich beroerd. Vandaag gaat naar school komen niet lukken. Hij stuurt Jayden een bericht: “Ik ben er niet.” Daarna wil hij zijn telefoon wegleggen.</p>
+          <p>Zijn moeder vraagt: “Weet school dat ook?” Sam denkt even na. Een klasgenoot informeren is handig, maar daarmee is zijn afwezigheid nog niet officieel gemeld.</p>
+          <p>Sam zoekt de uitleg van Ter AA op. <strong>Onder 18</strong> melden zijn ouders of verzorgers hem ziek. <strong>Vanaf 18</strong> doet hij dat zelf via Eduarte. Een geplande afspraak waarvoor hij vrij nodig heeft, regelt hij met een verlofaanvraag.</p>
+          <div class="note"><strong>Onthoud:</strong> vraag je studieloopbaanbegeleider of je de opleiding ook apart moet informeren. Loop je stage? Meld je dan óók ziek bij je stagebedrijf.</div>
+          <a class="resource-link" href="https://www.ter-aa.nl/voor-nieuwe-studenten" target="_blank" rel="noopener">Uitleg Ter AA</a>
+        </article>
+        <article class="tab-content" id="ziekonder18">
+          <span class="badge">ZIEKMELDEN · JONGER DAN 18</span>
+          <h2>Sam regelt het samen met thuis</h2>
+          <p>Sam is 17. Zijn moeder opent het ouderportaal met haar eigen inloggegevens. Sam vertelt wanneer zijn eerste les begint, zodat ze de melding kunnen controleren.</p>
+          <ol>
+            <li>Je ouder/verzorger opent <strong>ouders.ter-aa.nl</strong> en logt in.</li>
+            <li>Kies <strong>Presentie → Overzicht</strong> en daarna <strong>Absentie toevoegen</strong>.</li>
+            <li>Controleer de reden <strong>Ziek</strong>, de datum en de begintijd. Zorg dat de melding de gemiste lessen dekt.</li>
+            <li>Kies <strong>Opslaan</strong> om de ziekmelding vast te leggen.</li>
+          </ol>
+          <p>Sam meldt het dus niet alleen aan Jayden. Samen met zijn moeder controleert hij of het ook in het portaal is geregeld.</p>
+          <div class="note"><strong>Op een telefoon:</strong> open het menu via de drie streepjes. De knop voor een nieuwe melding kan als <strong>plusje</strong> worden weergegeven.</div>
+          <a class="action-link" href="https://ouders.ter-aa.nl/" target="_blank" rel="noopener">Open ouderportaal</a>
+        </article>
+        <article class="tab-content" id="ziekvanaf18">
+          <span class="badge">ZIEKMELDEN · 18 JAAR OF OUDER</span>
+          <h2>Sam doet het voortaan zelf</h2>
+          <p>Een paar maanden later is Sam 18. Wanneer hij opnieuw ziek thuis moet blijven, weet hij dat hij nu zelf verantwoordelijk is voor zijn ziekmelding.</p>
+          <ol>
+            <li>Open <strong>Startpunt</strong>, log in met je schoolaccount en ga naar <strong>Eduarte</strong>.</li>
+            <li>Kies <strong>Presentie → Overzicht → Absentie toevoegen</strong>.</li>
+            <li>Controleer <strong>Ziek</strong>, de datum en de begintijd. De voorgestelde tijd is niet altijd de start van je afwezigheid.</li>
+            <li>Pas zo nodig de tijd aan naar vóór je eerste gemiste les en sla de melding op.</li>
+          </ol>
+          <p>Sam leest alles nog eens voordat hij afsluit. Zo voorkomt hij dat alleen een deel van de lesdag wordt gemeld.</p>
+          <div class="note"><strong>De avond ervoor melden?</strong> Zet de datum op de dag waarop je afwezig bent en controleer de begintijd.</div>
+          <a class="action-link" href="https://start.ter-aa.nl" target="_blank" rel="noopener">Open Startpunt</a>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/07/Handleiding-Eduarte-Student-Ziek-melden-via-Eduarte.pdf" target="_blank" rel="noopener">Handleiding ziekmelden</a>
+        </article>
+        <article class="tab-content" id="verlof">
+          <span class="badge">VERLOF · VOORAF AANVRAGEN</span>
+          <h2>Sam heeft een afspraak</h2>
+          <p>Sam probeert zijn tandartsafspraak buiten schooltijd te plannen. Dat lukt niet. Hij vraagt daarom <strong>minimaal één dag vooraf</strong> verlof aan bij zijn studieloopbaanbegeleider.</p>
+          <ol>
+            <li>Log in op <strong>Eduarte</strong> en kies <strong>Presentie → Verlof</strong>.</li>
+            <li>Kies <strong>Verlof aanvragen</strong>.</li>
+            <li>Vul alle velden in, controleer de periode en leg bij de toelichting uit waarom je verlof vraagt.</li>
+            <li>Kies <strong>Opslaan</strong>. De status is nu <strong>Aangevraagd</strong>.</li>
+            <li>Controleer later de beoordeling en een eventuele toelichting van je mentor.</li>
+          </ol>
+          <p>Sam denkt eerst dat hij na het opslaan meteen vrij is. Dan ziet hij de status: zijn aanvraag moet nog beoordeeld worden.</p>
+          <div class="note"><strong>Onthoud:</strong> aangevraagd is nog niet goedgekeurd. Je kunt zelf aanvragen; ouders met toegang kunnen dat ook via het ouderportaal.</div>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/07/Handleiding-Eduarte-Student-Verlof-aanvragen-via-Eduarte.pdf" target="_blank" rel="noopener">Handleiding verlof</a>
+        </article>
+        <article class="tab-content" id="ouders">
+          <span class="badge">SAMEN ZICHT OP JE OPLEIDING</span>
+          <h2>Wat kunnen Sams ouders zien?</h2>
+          <p>Sam zit thuis met zijn moeder aan tafel. Ze vraagt hoe het op school gaat. Sam vertelt over de beamer, zijn eerste verslag en het samenwerken met Jayden. Daarna bekijken ze samen het ouderportaal.</p>
+          <p>Ouders/verzorgers krijgen bij studenten <strong>jonger dan 18</strong> automatisch toegang. Hun inloggegevens komen per e-mail; kijk ook in de spambox. Ze kunnen het <strong>rooster, de aanwezigheid en cijfers</strong> bekijken.</p>
+          <p>Sam ziet dat het portaal helpt om samen over school te praten. Zijn moeder hoeft niet elke keer te vragen wanneer zijn lessen beginnen.</p>
+          <div class="note"><strong>Inloggen:</strong> gebruik ouders.ter-aa.nl met de eigen oudergegevens. Ter AA gebruikt hiervoor de website, ook op de telefoon. Vragen over toegang? Mail <strong>ouderportaal@ter-aa.nl</strong>.</div>
+          <a class="action-link" href="https://ouders.ter-aa.nl/" target="_blank" rel="noopener">Open ouderportaal</a>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/07/Handleiding-Eduarte-Ouder-Ouderportaal-algemeen.pdf" target="_blank" rel="noopener">Handleiding ouderportaal</a>
+        </article>
+        <article class="tab-content" id="toestemming">
+          <span class="badge">18 JAAR · TOESTEMMING REGELEN</span>
+          <h2>Sam bepaalt wie mag meekijken</h2>
+          <p>Op Sams 18e verjaardag kan zijn moeder zijn gegevens niet meer zien. Er is niets kapot: haar toegang stopt automatisch. Sam bespreekt met haar of hij wil dat ze blijft meekijken.</p>
+          <ol>
+            <li>Open jouw <strong>Eduarte Studentenportaal</strong>.</li>
+            <li>Ga linksonder naar <strong>Profiel</strong> en kies <strong>Account</strong>.</li>
+            <li>Zoek het blok met je ouder/verzorger. Kies <strong>Toestaan</strong> als die persoon je gegevens mag inzien.</li>
+            <li>Staan er meerdere ouders/verzorgers? Bepaal de toegang <strong>per persoon</strong>.</li>
+          </ol>
+          <p>Sam geeft zijn moeder toestemming. Ze kan daarna weer met haar bestaande gegevens inloggen en zijn rooster, aanwezigheid en resultaten bekijken.</p>
+          <div class="note"><strong>Belangrijk:</strong> toestemming voor inzage betekent niet dat je ouder je weer kan ziekmelden. Vanaf 18 jaar blijf je dat zelf doen.</div>
+          <a class="resource-link" href="https://admin.ter-aa.nl/wp-content/uploads/2025/07/Handleiding-Eduarte-Student-Gegevensinzage-ouder-regelen.pdf" target="_blank" rel="noopener">Handleiding toestemming</a>
+        </article>
+      </section>
     </section>
-    <div class="footer">Tip: ziekmelden vóór je eerste lesuur is het handigst.</div>
   </main>
-<script src="route-nav.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(item => item.classList.toggle('active', item === button));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tab));
+    }));
+  </script>
 </body>
 </html>
